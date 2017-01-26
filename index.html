@@ -236,8 +236,12 @@
         <label for="newLineupName">Name/ID for new Lineup:</label>
         <input type="text" id="newLineupName" />
 
-        <label for="playPeriodsInput">Number of play periods each half: </label>
-        <input type="text" id="playPeriodsInput" />
+        <label for="playPeriodsInput">Choose your League: </label>
+        <select id="playPeriodsInput">
+            <option value="4">K-1 Basketball</option>
+            <option value="4">2-3 Basketball</option>
+            <option value="5">4-5 Basketball</option>
+        </select>
         <input type="button" value="Submit" onclick="saveNewLineup()" />
     </div>
 
@@ -804,13 +808,13 @@
                         }
                 }
 
-            if (alreadyTaken)
+            if (alreadyTaken || document.getElementById("newCoachID").value == "")
                 {
                     alert("Invalid CoachID");
                 }
             else
                 {
-                   document.getElementById("EnterCoachID").style.display = "none";
+                    document.getElementById("EnterCoachID").style.display = "none";
                     document.getElementById("createLineup").style.display = "block";
                 }
         }
