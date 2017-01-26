@@ -70,14 +70,14 @@
 
             <label for="newPlayerName">New Player Name</label>
             <input type="text" id="newPlayerName" />
-            <input type="button" id="newPlayerSubmit" value="Save" onclick="saveNewPlayer()" />
+            <input type="button" id="newPlayerSubmit" class="topButtons" style="background-color:green;" value="Save" onclick="saveNewPlayer()" />
 
         </div>
         <div id="removePlayerDiv" style="display: none">
 
             <label for="removePlayerName">Player to Remove</label>
             <select id="removePlayerName" />
-            <input type="button" id="removePlayerSubmit" value="Remove" onclick="removePlayer()" />
+            <input type="button" id="removePlayerSubmit" class="topButtons" value="Remove" style="background-color:red;" onclick="removePlayer()" />
 
         </div>
 
@@ -206,13 +206,13 @@
         <label for="lineupInput" id="lineupInputLabel">LineupID</label>
         <input type="text" name="LineupID" id="lineupInput" />
 
-        <input type="submit" id="coachSubmit" />
+        <input type="submit" class="topButtons" style="background-color:green;" id="coachSubmit" />
         </form>
 
         <h4>New? Set up a new CoachID</h4>
         <label for="newCoachID">New CoachID</label>
         <input type="text" id="newCoachID" />
-        <input type="button" value="Submit" onclick="setUpNewCoach()">
+        <input type="button" value="Submit" class="topButtons" style="background-color:green;" onclick="setUpNewCoach()">
         <p style="color:red; font-size:small;">Note: Make CoachID hard to guess and do not share it with other coaches.</p>
 
     </div>
@@ -220,15 +220,19 @@
     <div id ="ChooseLineup" style="display: none">
         <h1>Choose a Lineup:</h1>
         <select id="lineupSelector"></select>
-        <input type="button" value="Submit" onclick="navToLineup()" />
-        <input type="button" value="Delete" onclick="deleteLineup()" style="background-color:red; border-radius:100%;" />
+        <input type="button" value="Submit" class="topButtons" onclick="navToLineup()" style="background-color:green;" />
+        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="background-color:red;" />
 
         <h3>New Lineup:</h3>
         <label for="newLineupInput">New Lineup Name/ID</label>
         <input type="text" id="newLineupInput" />
-        <label for="newLineupInput2">Number of play periods each half</label>
-        <input type="text" id="newLineupInput2" />
-        <input type="button" value="Submit" onclick="setUpNewLineup()">
+        <label for="newLineupInput2">Choose your League:</label>
+        <select type="text" id="newLineupInput2" >
+            <option value="4">K-1 Basketball</option>
+            <option value="4">2-3 Basketball</option>
+            <option value="5">4-5 Basketball</option>
+        </select>
+        <input type="button" value="Submit" class="topButtons" style="background-color:green;" onclick="setUpNewLineup()">
     </div>
 
     <div id ="createLineup" style="display: none">
@@ -243,13 +247,13 @@
             <option value="4">2-3 Basketball</option>
             <option value="5">4-5 Basketball</option>
         </select>
-        <input type="button" value="Submit" onclick="saveNewLineup()" />
+        <input type="button" value="Submit" class="topButtons" style="background-color:green;" onclick="saveNewLineup()" />
     </div>
 
     <div id="reorderDiv" style="display:none">
         <h1>Reorder Players</h1>
-        <div id="reorderContainer"></div>
-        <input type="button" value="Save" onclick="saveReorder()" />
+        <div id="reorderContainer"></div></div>
+        <input type="button" value="Save" class="topButtons" style="background-color:green;" onclick="saveReorder()" />
     </div>
 
     <div style="margin-top:100px;float:right">
@@ -476,7 +480,7 @@
                                 }
                         }
                     document.getElementById("mainHeader").innerHTML += " for " + currentLineup;
-                    document.getElementById("assignmentsList").innerHTML += ": (" + Object.keys(dataJSON).length + " players)";
+                    document.getElementById("assignmentsList").innerHTML += ": (" + (Object.keys(dataJSON).length - 1) + " players)";
 
                 }
             else
@@ -1086,6 +1090,14 @@
 
             reorderArray = [];
 
+            var newADiv = document.createElement("div");
+            newADiv.id = "ADiv";
+            document.getElementById("reorderContainer").appendChild(newADiv);
+
+            var newBDiv = document.createElement("div");
+            newBDiv.id = "BDiv";
+            document.getElementById("reorderContainer").appendChild(newBDiv);
+
             for (var i = 0; i < tempArray.length; i++)
                 {
                     reorderArray.push(tempArray[i].Name);
@@ -1094,23 +1106,24 @@
                     newP.style.display = "inline";
                     newP.style.margin = "10px";
                     newP.innerHTML = tempArray[i].Name;
-                    document.getElementById("reorderContainer").appendChild(newP);
+                    document.getElementById("ADiv").appendChild(newP);
 
                     var newUp = document.createElement("input");
                     newUp.type = "button";
                     newUp.value = String.fromCharCode(8593);
                     newUp.id = tempArray[i].Name + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("reorderContainer").appendChild(newUp);
+                    document.getElementById("BDiv").appendChild(newUp);
 
                     var newDown = document.createElement("input");
                     newDown.type = "button";
                     newDown.value = String.fromCharCode(8595);
                     newDown.id = tempArray[i].Name + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("reorderContainer").appendChild(newDown);
+                    document.getElementById("BDiv").appendChild(newDown);
 
-                    document.getElementById("reorderContainer").appendChild(document.createElement("br"));
+                    document.getElementById("ADiv").appendChild(document.createElement("br"));
+                    document.getElementById("BDiv").appendChild(document.createElement("br"));
                 }
 
         }
@@ -1143,6 +1156,14 @@
                     document.getElementById("reorderContainer").removeChild(document.getElementById("reorderContainer").lastChild);
                 }
 
+            var newADiv = document.createElement("div");
+            newADiv.id = "ADiv";
+            document.getElementById("reorderContainer").appendChild(newADiv);
+
+            var newBDiv = document.createElement("div");
+            newBDiv.id = "BDiv";
+            document.getElementById("reorderContainer").appendChild(newBDiv);
+
             for (var i = 0; i < reorderArray.length; i++)
                 {
 
@@ -1150,23 +1171,24 @@
                     newP.style.display = "inline";
                     newP.style.margin = "10px";
                     newP.innerHTML = reorderArray[i];
-                    document.getElementById("reorderContainer").appendChild(newP);
+                    document.getElementById("ADiv").appendChild(newP);
 
                     var newUp = document.createElement("input");
                     newUp.type = "button";
                     newUp.value = String.fromCharCode(8593);
                     newUp.id = reorderArray[i] + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("reorderContainer").appendChild(newUp);
+                    document.getElementById("BDiv").appendChild(newUp);
 
                     var newDown = document.createElement("input");
                     newDown.type = "button";
                     newDown.value = String.fromCharCode(8595);
                     newDown.id = reorderArray[i] + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("reorderContainer").appendChild(newDown);
+                    document.getElementById("BDiv").appendChild(newDown);
 
-                    document.getElementById("reorderContainer").appendChild(document.createElement("br"));
+                    document.getElementById("ADiv").appendChild(document.createElement("br"));
+                    document.getElementById("BDiv").appendChild(document.createElement("br"));
                 }
 
         }
@@ -1208,7 +1230,14 @@
                 {
                     if (player != "playPeriods")
                         {
-                            document.getElementById("player" + dataJSON[player].Skill + "Cell" + colNum).style.borderColor = "yellow";
+                            if (document.getElementById("player" + dataJSON[player].Skill + "Cell" + colNum).style.borderColor == "")
+                                {
+                                    document.getElementById("player" + dataJSON[player].Skill + "Cell" + colNum).style.borderColor = "yellow";
+                                }
+                            else
+                                {
+                                    document.getElementById("player" + dataJSON[player].Skill + "Cell" + colNum).style.borderColor = "";
+                                }
                         }
                 }
         }
