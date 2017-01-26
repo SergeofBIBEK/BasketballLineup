@@ -1,0 +1,107 @@
+p
+    {
+        margin: 0px;
+    }
+.firstTable
+    {
+        width: 50%;
+        border: 1px solid black;
+        display: table;
+    }
+.playingTable
+    {
+        width: 50%;
+        border: 1px solid black;
+        display: table;
+    }
+.benchTable
+    {
+        width: 50%;
+        border: 1px solid black;
+        display: table;
+    }
+.titleRow
+    {
+        border: 1px solid black;
+        display: table-row;
+    }
+.playerRow
+    {
+        border: 1px solid black;
+        display: table-row;
+    }
+.totalRow
+    {
+        border: 1px solid black;
+        display: table-row;
+    }
+.benchRow
+    {
+        border: 1px solid black;
+        display: table-row;
+    }
+.playingRow1
+    {
+        border: 1px solid black;
+        display: table-row;
+        background-color: black;
+        color: white;
+    }
+.playingRow2
+    {
+        border: 1px solid black;
+        display: table-row;
+        background-color: #87CEFA;
+    }
+.playingRow3
+    {
+        border: 1px solid black;
+        display: table-row;
+        background-color: #ff8080;
+    }
+.playingRow4
+    {
+        border: 1px solid black;
+        display: table-row;
+        background-color: #FFB6C1;
+    }
+.playingRow5
+    {
+        border: 1px solid black;
+        display: table-row;
+    }
+.titleCell
+    {
+        border: 1px solid black;
+        display: table-cell;
+        text-align: center;
+    }
+
+.playerCell
+    {
+        border: inherit;
+        display: table-cell;
+        text-align: center;
+    }
+.totalCell
+    {
+        border: 1px solid black;
+        display: table-cell;
+        text-align: center;
+    }
+.benchCell
+    {
+        border: 1px solid black;
+        display: table-cell;
+        text-align: center;
+    }
+.playingCell
+    {
+        border: 1px solid black;
+        display: table-cell;
+        text-align: center;
+    }
+[hide1st="true"]
+    {
+        display: none;
+    }
