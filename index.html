@@ -63,7 +63,7 @@
         <label for="newPlayerButton">Add a Player</label>
         <input type="button" id="deletePlayerButton" value="-" onclick="deletePlayer()" style="background-color:red;border-radius:100%;" />
         <label for="deletePlayerButton">Remove a Player</label>
-        <input type="button" id="reorderPlayerButton" value="^" onclick="reorderPlayer()" style="background-color:blue;color:white;border-radius:100%;" />
+        <input type="button" id="reorderPlayerButton" value="&#x21c5;" onclick="reorderPlayer()" style="background-color:blue;color:white;border-radius:100%;" />
         <label for="reorderPlayerButton">Reorder Players</label>
         <div id="newPlayerDiv" style="display: none">
 
@@ -1097,14 +1097,14 @@
 
                     var newUp = document.createElement("input");
                     newUp.type = "button";
-                    newUp.value = "^";
+                    newUp.value = String.fromCharCode(8593);
                     newUp.id = tempArray[i].Name + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("reorderContainer").appendChild(newUp);
 
                     var newDown = document.createElement("input");
                     newDown.type = "button";
-                    newDown.value = "\\/";
+                    newDown.value = String.fromCharCode(8595);
                     newDown.id = tempArray[i].Name + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("reorderContainer").appendChild(newDown);
@@ -1153,14 +1153,14 @@
 
                     var newUp = document.createElement("input");
                     newUp.type = "button";
-                    newUp.value = "^";
+                    newUp.value = String.fromCharCode(8593);
                     newUp.id = reorderArray[i] + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("reorderContainer").appendChild(newUp);
 
                     var newDown = document.createElement("input");
                     newDown.type = "button";
-                    newDown.value = "\\/";
+                    newDown.value = String.fromCharCode(8595);
                     newDown.id = reorderArray[i] + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("reorderContainer").appendChild(newDown);
