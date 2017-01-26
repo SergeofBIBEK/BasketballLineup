@@ -1,3 +1,14 @@
+body
+{
+    font-family: sans-serif;
+}
+#navHeader
+{
+    background-image: url(basketballtexture.jpg);
+    height: 50px;
+    font-size: xx-large;
+    font-weight: bold;
+}
 p
     {
         margin: 0px;
@@ -7,18 +18,21 @@ p
         width: 50%;
         border: 1px solid black;
         display: table;
+        margin: 5px 5px;
     }
 .playingTable
     {
         width: 50%;
         border: 1px solid black;
         display: table;
+        margin: 0px 5px;
     }
 .benchTable
     {
         width: 50%;
         border: 1px solid black;
         display: table;
+        margin: 0px 5px;
     }
 .titleRow
     {
@@ -75,6 +89,7 @@ p
         border: 1px solid black;
         display: table-cell;
         text-align: center;
+        padding: 1px 2px;
     }
 
 .playerCell
@@ -105,3 +120,42 @@ p
     {
         display: none;
     }
+
+.topButtons
+{
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: solid 1px black;
+}
+
+.topButtons:hover
+{
+    border-width: 2px;
+}
+
+.topButtons:active
+{
+    transform: translateY(4px);
+}
+
+#backToCoachButton
+{
+    background-color: orangered;
+    border: 1px solid black;
+    font-size: medium;
+    outline: none;
+    cursor: pointer;
+}
+#backToCoachButton:hover
+{
+    border-width: 2px;
+}
+#backToCoachButton:active
+{
+    transform: translateY(4px);
+}
