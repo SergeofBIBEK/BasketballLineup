@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
@@ -15,12 +16,13 @@
     <div class="theContainer" id="theContainer" style="display: none">
         <input type="button" id="backToCoachButton" value="Back to Lineup List" onclick="backtoCoach()" style="height:30px;float:;eft;background-color:black;color:white;border-radius:100%;"/>
 
-        <h1>Basketball Lineup</h1>
-
-        <input type="button" id="saveLineupButton" value="Copy Lineup" onclick="copyLineup()" style="height:30px;float:right;background-color:blue;color:white;border-radius:100%;"/>
-        <input type="button" id="saveLineupButton" value="Save Lineup" onclick="saveLineup()" style="height:30px;float:right;background-color:green;color:white;border-radius:100%;"/>
-
+        <h1 id="mainHeader">Basketball Lineup</h1>
         <h2>Assignments</h2>
+
+        <input type="button" id="clearButton" value="Clear" onclick="clearCheckboxes()" style="height:30px;background-color:yellow;color:black;border-radius:100%;" />
+        <input type="button" id="saveLineupButton" value="Copy Lineup" onclick="copyLineup()" style="height:30px;background-color:blue;color:white;border-radius:100%;" />
+        <input type="button" id="saveLineupButton" value="Save Lineup" onclick="saveLineup()" style="height:30px;background-color:green;color:white;border-radius:100%;" />
+
         <div class="firstTable" id="firstTable">
             <div id="titleRow" class="titleRow">
                 <div class="titleCell"><p>Player</p></div>
@@ -42,7 +44,7 @@
         <label for="newPlayerButton">Add a Player</label>
         <input type="button" id="deletePlayerButton" value="-" onclick="deletePlayer()" style="background-color:red;border-radius:100%;" />
         <label for="deletePlayerButton">Remove a Player</label>
-        <input type="button" id="reorderPlayerButton" value="^" onclick="reorderPlayer()" style="background-color:blue;border-radius:100%;" />
+        <input type="button" id="reorderPlayerButton" value="^" onclick="reorderPlayer()" style="background-color:blue;color:white;border-radius:100%;" />
         <label for="reorderPlayerButton">Reorder Players</label>
         <div id="newPlayerDiv" style="display: none">
 
@@ -54,7 +56,7 @@
         <div id="removePlayerDiv" style="display: none">
 
             <label for="removePlayerName">Player to Remove</label>
-            <input type="text" id="removePlayerName" />
+            <select id="removePlayerName" />
             <input type="button" id="removePlayerSubmit" value="Remove" onclick="removePlayer()" />
 
         </div>
@@ -220,6 +222,14 @@
         <input type="button" value="Submit" onclick="saveNewLineup()" />
     </div>
 
+    <div id="reorderDiv" style="display:none">
+        <h1>Reorder Players</h1>
+        <div id="reorderContainer"></div>
+        <input type="button" value="Save" onclick="saveReorder()" />
+
+
+    </div>
+
     <script>
         //firebase vars
         var database = firebase.database();
@@ -233,6 +243,7 @@
         //local vars
         var benchArrays = [["none"]];
         var playingArrays = [["none"],[],[],[],[],[],["none"],[],[],[],[],[]];
+        var reorderArray = [];
 
         //Completion Variables
         var rowsDone = false;
@@ -374,6 +385,10 @@
                                         {
                                             newCell.setAttribute("hide1st", "false");
                                         }
+                                    if (j == 0)
+                                        {
+                                            newCell.setAttribute("onclick","colorRow(this)")
+                                        }
                                     document.getElementById("player" + i + "Row").appendChild(newCell);
                                 }
                         }
@@ -427,6 +442,7 @@
                                         }
                                 }
                         }
+                    document.getElementById("mainHeader").innerHTML += " for " + currentLineup;
                 }
             else
                 {
@@ -579,6 +595,22 @@
 
             if (e.checked == true)
                 {
+                    document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "black";
+                    if (columnNum != 5 && columnNum != 11)
+                        {
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "")
+                                {
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "red";
+                                }
+                        }
+                    if (columnNum == 5)
+                        {
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "")
+                                {
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "red";
+                                }
+                        }
+
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal + 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal + 1;
 
@@ -597,9 +629,8 @@
 
                     //addToLineup
                     playingArrays[columnNum].push(dataJSON[playerName]);
-
-
                     updateLineup();
+
                     //removeFromBench
                     for (var i = 0; i < benchArrays[columnNum].length; i++)
                     {
@@ -612,6 +643,23 @@
                 }
             if (e.checked == false)
                 {
+                    document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "white";
+
+                    if (columnNum != 5 && columnNum != 11)
+                        {
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "red")
+                                {
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "white";
+                                }
+                        }
+                    if (columnNum == 5)
+                        {
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "red")
+                                {
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white";
+                                }
+                        }
+
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal - 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal - 1;
 
@@ -627,6 +675,7 @@
                         {
                             document.getElementById("totalCell" + columnNum).style.backgroundColor = "red";
                         }
+
                     //remove from lineup
                     for (var i = 0; i < playingArrays[columnNum].length; i++)
                     {
@@ -635,12 +684,24 @@
                             playingArrays[columnNum].splice(i, 1);
                         }
                     }
-
                     updateLineup();
+
                     //add to bench
                     benchArrays[columnNum].push(dataJSON[playerName]);
                     updateBench();
                 }
+            if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) == Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
+                        {
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "green";
+                        }
+                    if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) < Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
+                        {
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "gray";
+                        }
+                    if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) > Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
+                        {
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "red";
+                        }
             updateTotal();
         }
 
@@ -662,12 +723,12 @@
         {
             for (var j = 1; j < 12; j++)
                 {
-                    if (dataJSON.playPeriods == 4)
-                        {
+                    //if (dataJSON.playPeriods == 4)
+                        //{
                             playingArrays[j].sort(function (a, b) {
                               return a.Skill - b.Skill;
                             });
-                        }
+                        //}
                     if (j != 6)
                         {
                             for (var l = 1; l < 6; l++)
@@ -737,17 +798,15 @@
 
         function saveNewLineup()
         {
-            var newCoach = unescape(document.getElementById("newCoachID").value);
-            var newLineup = unescape(document.getElementById("newLineupName").value);
-            var newPlayPeriods = document.getElementById("playPeriodsInput").value;
+            var newCoach = unescape(document.getElementById("newCoachID").value).split("/").join();
+            var newLineup = unescape(document.getElementById("newLineupName").value).split("/").join();
+            var newPlayPeriods = document.getElementById("playPeriodsInput").value.split("/").join();
 
             if (newLineup != "" && newPlayPeriods != "")
                 {
                     firebase.database().ref(newCoach + "/" + newLineup).update({
                         "playPeriods": newPlayPeriods,
-                    });
-
-                    window.location.search = "?CoachID=" + newCoach + "&LineupID=" + newLineup;
+                    }, function(){window.location.search = "?CoachID=" + newCoach + "&LineupID=" + newLineup;});
                 }
             else
                 {
@@ -757,16 +816,14 @@
 
         function setUpNewLineup()
         {
-            var newLineup = unescape(document.getElementById("newLineupInput").value);
-            var newPlayPeriods = document.getElementById("newLineupInput2").value;
+            var newLineup = unescape(document.getElementById("newLineupInput").value).split("/").join();
+            var newPlayPeriods = document.getElementById("newLineupInput2").value.split("/").join();
 
             if (newLineup != "" && newPlayPeriods != "")
                 {
                     firebase.database().ref(CoachID + "/" + newLineup).update({
                         "playPeriods": newPlayPeriods,
-                    });
-
-                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + newLineup;
+                    },function(){window.location.search = "?CoachID=" + newCoach + "&LineupID=" + newLineup;});
                 }
             else
                 {
@@ -783,7 +840,7 @@
         {
             var newCount = 0;
             var alreadyExists = false;
-            var newPlayer = document.getElementById("newPlayerName").value;
+            var newPlayer = document.getElementById("newPlayerName").value.split("/").join();
 
             for (var player in dataJSON)
                 {
@@ -807,9 +864,7 @@
                         "Name": newPlayer,
                         "Skill": newCount,
                         "Checkboxes": "0,0,0,0,0,0,0,0,0,0,0,0,0",
-                    });
-
-                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;
+                    },function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;});
                 }
             //save the new player
         }
@@ -851,7 +906,7 @@
 
         function copyLineup()
         {
-            var copyToLineup = prompt("Please enter lineup name/ID to copy to. | Note: This will create a new lineup if there is not one, and it will overwrite existing lineups.");
+            var copyToLineup = prompt("Please enter lineup name/ID to copy to. | Note: This will create a new lineup if there is not one, and it will overwrite existing lineups.").split("/").join();
 
             if (copyToLineup == "" || copyToLineup == "playPeriods")
                 {
@@ -864,18 +919,37 @@
                                 "playPeriods": dataJSON.playPeriods,
                             });
 
+                    var numLoops = 1;
                     for (player in dataJSON)
                         {
                             if (player != "playPeriods")
                                 {
-                                    firebase.database().ref(CoachID + "/" + copyToLineup + "/" + player).update({
-                                        "Checkboxes": dataJSON[player].Checkboxes,
-                                        "Skill": dataJSON[player].Skill,
-                                        "Name": dataJSON[player].Name,
-                                    });
+                                    console.log(numLoops + ":" + (Object.keys(dataJSON).length - 1));
+                                    if (numLoops == (Object.keys(dataJSON).length - 1 ))
+                                            {
+                                                firebase.database().ref(CoachID + "/" + copyToLineup + "/" + player).update({
+                                                    "Checkboxes": dataJSON[player].Checkboxes,
+                                                    "Skill": dataJSON[player].Skill,
+                                                    "Name": dataJSON[player].Name,
+                                                },function(){
+                                                            if (confirm("Copied successfully to: " + copyToLineup + " Click OK to go there, Cancel to stay on this Lineup"))
+                                                                {
+                                                                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + copyToLineup;
+                                                                }
+                                                });
+                                            }
+                                    else
+                                        {
+
+                                            firebase.database().ref(CoachID + "/" + copyToLineup + "/" + player).update({
+                                                "Checkboxes": dataJSON[player].Checkboxes,
+                                                "Skill": dataJSON[player].Skill,
+                                                "Name": dataJSON[player].Name,
+                                            });
+                                        }
                                 }
+                            numLoops++;
                         }
-                    alert("Copied successfully to:" + copyToLineup);
                 }
         }
 
@@ -891,15 +965,24 @@
 
             if (decision)
                 {
-                    firebase.database().ref(CoachID + "/" + lineupToDelete).remove();
+                    firebase.database().ref(CoachID + "/" + lineupToDelete).remove(function(){backtoCoach();});
                 }
-            backtoCoach();
-
         }
 
         function deletePlayer()
         {
             document.getElementById("removePlayerDiv").style.display = "block";
+
+            for (var player in dataJSON)
+                        {
+                            if (player != "playPeriods")
+                                {
+                                    var newOption = document.createElement("option");
+                                    newOption.value = player;
+                                    newOption.innerHTML= player;
+                                    document.getElementById("removePlayerName").appendChild(newOption);
+                                }
+                        }
         }
 
         function removePlayer()
@@ -907,17 +990,181 @@
             var playerToDelete = unescape(document.getElementById("removePlayerName").value);
             var decision = confirm("Are you sure you wish to delete " + playerToDelete + "? This action cannot be undone.");
 
-            if (decision && playerToDelete != "playPeriods" && playerToDelete != "")
+            if (decision)
                 {
-                    firebase.database().ref(CoachID + "/" + currentLineup + "/" + playerToDelete).remove();
+                    var tempArray =[];
+
+                    delete dataJSON[playerToDelete];
+
+                    for (var player in dataJSON)
+                        {
+                            if (player != "playPeriods")
+                                {
+                                    tempArray.push(dataJSON[player]);
+                                }
+                        }
+                    tempArray.sort(function (a, b) {
+                                      return a.Skill - b.Skill;
+                                    });
+
+                    for (var i = 0; i < tempArray.length; i++)
+                        {
+                            dataJSON[tempArray[i].Name].Skill = i;
+
+                        }
+
+                    for (var player in dataJSON)
+                        {
+                            if (player != "playPeriods")
+                                {
+                                    firebase.database().ref(CoachID + "/" + currentLineup + "/" + player).update({
+                                        "Skill": dataJSON[player].Skill,
+                                    });
+                                }
+                        }
                 }
 
-            setTimeout(function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup},1000);
+            if (decision && playerToDelete != "playPeriods" && playerToDelete != "")
+                {
+                    firebase.database().ref(CoachID + "/" + currentLineup + "/" + playerToDelete).remove(function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup});
+                }
         }
 
         function reorderPlayer()
         {
+            document.getElementById("reorderDiv").style.display = "block";
+            document.getElementById("theContainer").style.display = "none";
 
+            var tempArray = []
+
+            for (var player in dataJSON)
+                {
+                    if (player != "playPeriods")
+                        {
+                            tempArray.push(dataJSON[player]);
+                        }
+                }
+
+            tempArray.sort(function (a, b) {
+                              return a.Skill - b.Skill;
+                            });
+
+            reorderArray = [];
+
+            for (var i = 0; i < tempArray.length; i++)
+                {
+                    reorderArray.push(tempArray[i].Name);
+
+                     var newP = document.createElement("p");
+                    newP.style.display = "inline";
+                    newP.style.margin = "10px";
+                    newP.innerHTML = tempArray[i].Name;
+                    document.getElementById("reorderContainer").appendChild(newP);
+
+                    var newUp = document.createElement("input");
+                    newUp.type = "button";
+                    newUp.value = "^";
+                    newUp.id = tempArray[i].Name + "Up";
+                    newUp.setAttribute("onclick", "movePlayer(this)");
+                    document.getElementById("reorderContainer").appendChild(newUp);
+
+                    var newDown = document.createElement("input");
+                    newDown.type = "button";
+                    newDown.value = "\\/";
+                    newDown.id = tempArray[i].Name + "Down";
+                    newDown.setAttribute("onclick", "movePlayer(this)");
+                    document.getElementById("reorderContainer").appendChild(newDown);
+
+                    document.getElementById("reorderContainer").appendChild(document.createElement("br"));
+                }
+
+        }
+
+        function movePlayer(e)
+        {
+            var playerToMove = e.id.split("Up")[0].split("Down")[0];
+            var direction = e.id.split(playerToMove)[1];
+            console.log(playerToMove + " goes " + direction);
+
+            if (direction == "Up")
+                {
+                    // move up
+                    var index = reorderArray.indexOf(playerToMove);
+                    reorderArray.splice(index,1);
+                    index--;
+                    reorderArray.splice(index,0,playerToMove);
+                }
+            else
+                {
+                    //move down
+                    var index = reorderArray.indexOf(playerToMove);
+                    reorderArray.splice(index,1);
+                    index++;
+                    reorderArray.splice(index,0,playerToMove);
+                }
+
+            while(document.getElementById("reorderContainer").hasChildNodes())
+                {
+                    document.getElementById("reorderContainer").removeChild(document.getElementById("reorderContainer").lastChild);
+                }
+
+            for (var i = 0; i < reorderArray.length; i++)
+                {
+
+                     var newP = document.createElement("p");
+                    newP.style.display = "inline";
+                    newP.style.margin = "10px";
+                    newP.innerHTML = reorderArray[i];
+                    document.getElementById("reorderContainer").appendChild(newP);
+
+                    var newUp = document.createElement("input");
+                    newUp.type = "button";
+                    newUp.value = "^";
+                    newUp.id = reorderArray[i] + "Up";
+                    newUp.setAttribute("onclick", "movePlayer(this)");
+                    document.getElementById("reorderContainer").appendChild(newUp);
+
+                    var newDown = document.createElement("input");
+                    newDown.type = "button";
+                    newDown.value = "\\/";
+                    newDown.id = reorderArray[i] + "Down";
+                    newDown.setAttribute("onclick", "movePlayer(this)");
+                    document.getElementById("reorderContainer").appendChild(newDown);
+
+                    document.getElementById("reorderContainer").appendChild(document.createElement("br"));
+                }
+
+        }
+
+        function saveReorder()
+        {
+            for (var i = 0; i < reorderArray.length; i++)
+                {
+                    firebase.database().ref(CoachID + "/" + currentLineup + "/" + reorderArray[i]).update({
+                                        "Skill": i,
+                                    }, function(){
+                                                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;
+                                        });
+                }
+        }
+
+        function clearCheckboxes()
+        {
+            $('input[type="checkbox"]:checked').each(function () {this.click();});
+        }
+
+        function colorRow(e)
+        {
+            var playerNumber = e.id.split("Cell")[0];
+
+            if (document.getElementById(playerNumber + "Row").style.borderColor == "")
+                {
+                    document.getElementById(playerNumber + "Row").style.borderColor = "yellow";
+                }
+            else
+                {
+                    document.getElementById(playerNumber + "Row").style.borderColor = "";
+                }
         }
         //Feature Requests
         /*
