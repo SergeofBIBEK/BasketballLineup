@@ -32,7 +32,7 @@
     </head>
 <body>
 
-    <div id="navHeader"><p>Basketball Lineup Manager</p></div>
+    <div id="navHeader"><p id="titleText">Line 'em Up</p><p id="subtitleText">Lineup Generator</p></div>
     <div class="theContainer" id="theContainer" style="display: none">
         <input type="button" id="backToCoachButton" value="&#x21E6 Back to Lineup List" onclick="backtoCoach()" />
 
@@ -197,23 +197,23 @@
     </div>
 
     <div id="EnterCoachID" style="display: none">
-        <h1>Enter Your Secret Coach ID</h1>
-        <h3>Optional: Enter your LineupID</h3>
+        <p style="position: absolute;top: 180px;left: 115px;font-size: 30px;">Enter Your Secret Coach ID</p>
+        <p style="position: absolute;top: 233px;left: 120px;font-size: 20px;">Optional: Enter your LineupID</p>
         <form method="get">
-        <label for="coachInput" id="coachInputLabel">CoachID</label>
-        <input type="text" name="CoachID" id="coachInput" />
+        <label for="coachInput" id="coachInputLabel" style="position: absolute;top: 295px;left: 120px;font-size: 22px;">CoachID:</label>
+        <input type="text" name="CoachID" id="coachInput" style="position: absolute;top: 325px;left: 120px;height: 35px;width: 240px;" />
 
-        <label for="lineupInput" id="lineupInputLabel">LineupID</label>
-        <input type="text" name="LineupID" id="lineupInput" />
+        <label for="lineupInput" id="lineupInputLabel" style="position: absolute;top: 367px;left: 120px;font-size: 22px;">LineupID:</label>
+        <input type="text" name="LineupID" id="lineupInput" style="position: absolute;top: 396px;left: 120px;height: 35px;width: 240px;" />
 
-        <input type="submit" class="topButtons" style="background-color:green;" id="coachSubmit" />
+        <input type="image" class="submitButton" src="submitButton.png" id="coachSubmit" style="position: absolute;top: 398px;left: 400px;" />
         </form>
 
-        <h4>New? Set up a new CoachID</h4>
-        <label for="newCoachID">New CoachID</label>
-        <input type="text" id="newCoachID" />
-        <input type="button" value="Submit" class="topButtons" style="background-color:green;" onclick="setUpNewCoach()">
-        <p style="color:red; font-size:small;">Note: Make CoachID hard to guess and do not share it with other coaches.</p>
+        <p style="position: absolute;top: 510px;left: 120px;height: 30px;font-size: 20px;">New? Set up a new CoachID</p>
+        <label for="newCoachID" style="position: absolute;top: 543px;left: 120px;font-size: 22px;">New CoachID</label>
+        <input type="text" id="newCoachID" style="position: absolute;top: 572px;left: 120px;height: 35px;width: 240px;" />
+        <input type="image" class="submitButton" src="submitButton.png" onclick="setUpNewCoach()" style="position: absolute;top: 575px;left: 400px;" />
+        <p style="position: absolute;top: 619px;left: 120px;font-size: 21px;color: #ad0505;width: 365px;">Note: Make CoachID hard to guess and do not share it with other coaches.</p>
 
     </div>
 
@@ -256,7 +256,7 @@
         <input type="button" value="Save" class="topButtons" style="background-color:green;" onclick="saveReorder()" />
     </div>
 
-    <div style="margin-top:100px;float:right">
+    <div id="supportButton">
     <p>Support the Developer?</p>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">
