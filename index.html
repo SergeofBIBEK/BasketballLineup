@@ -639,14 +639,14 @@
                         {
                             if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "")
                                 {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "red";
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "#d4d4f7";
                                 }
                         }
                     if (columnNum == 5)
                         {
                             if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "")
                                 {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "red";
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "#d4d4f7";
                                 }
                         }
 
@@ -659,11 +659,11 @@
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) == 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "green";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#6bb300";
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) > 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "red";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#e6e6fa";
                         }
 
                     //addToLineup
@@ -686,14 +686,14 @@
 
                     if (columnNum != 5 && columnNum != 11)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "red")
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "#d4d4f7")
                                 {
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "white";
                                 }
                         }
                     if (columnNum == 5)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "red")
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "#d4d4f7")
                                 {
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white";
                                 }
@@ -708,11 +708,11 @@
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) == 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "green";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#6bb300";
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) > 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "red";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#e6e6fa";
                         }
 
                     //remove from lineup
@@ -731,7 +731,7 @@
                 }
             if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) == Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
                         {
-                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "green";
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "#6bb300";
                         }
                     if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) < Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
                         {
@@ -739,7 +739,7 @@
                         }
                     if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) > Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
                         {
-                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "red";
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "#e6e6fa";
                         }
             updateTotal();
         }
