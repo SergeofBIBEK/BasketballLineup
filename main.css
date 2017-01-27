@@ -193,7 +193,7 @@ select
 {
     display: inline-flex;
 }
-#EnterCoachID, #ChooseLineup
+#EnterCoachID, #ChooseLineup, #createLineup
 {
     background-image: url(LoginBackground.png);
     width: 978px;
