@@ -201,17 +201,17 @@
         <p style="position: absolute;top: 233px;left: 120px;font-size: 20px;">Optional: Enter your LineupID</p>
         <form method="get">
         <label for="coachInput" id="coachInputLabel" style="position: absolute;top: 295px;left: 120px;font-size: 22px;">CoachID:</label>
-        <input type="text" name="CoachID" id="coachInput" style="position: absolute;top: 325px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
+        <input type="text" name="CoachID" id="coachInput" style="position: absolute;top: 325px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;" />
 
         <label for="lineupInput" id="lineupInputLabel" style="position: absolute;top: 367px;left: 120px;font-size: 22px;">LineupID:</label>
-        <input type="text" name="LineupID" id="lineupInput" style="position: absolute;top: 396px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
+        <input type="text" name="LineupID" id="lineupInput" style="position: absolute;top: 396px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;" />
 
         <input type="image" class="submitButton" src="submitButton.png" id="coachSubmit" style="position: absolute;top: 398px;left: 400px;" />
         </form>
 
         <p style="position: absolute;top: 510px;left: 120px;height: 30px;font-size: 20px;">New? Set up a new CoachID</p>
         <label for="newCoachID" style="position: absolute;top: 543px;left: 120px;font-size: 22px;">New CoachID</label>
-        <input type="text" id="newCoachID" style="position: absolute;top: 572px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
+        <input type="text" id="newCoachID" style="position: absolute;top: 572px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;" />
         <input type="image" class="submitButton" src="submitButton.png" onclick="setUpNewCoach()" style="position: absolute;top: 575px;left: 400px;" />
         <p style="position: absolute;top: 619px;left: 120px;font-size: 21px;color: #ad0505;width: 365px;">Note: Make CoachID hard to guess and do not share it with other coaches.</p>
 
@@ -219,15 +219,15 @@
 
     <div id ="ChooseLineup" style="display: none">
         <p style="position: absolute;top: 180px;left: 120px;font-size: 30px;">Choose a Lineup:</p>
-        <select id="lineupSelector" style="position: absolute;top: 218px;left: 120px;height: 35px;font-size: 15px;background: transparent;border: 4px double black;width: 240px;"></select>
+        <select id="lineupSelector" style="position: absolute;top: 218px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;width: 240px;"></select>
         <input type="image" class="submitButton" src="submitButton.png" onclick="navToLineup()" style="position: absolute;top: 220px;left: 370px;" />
-        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="position: absolute;top: 220px;left: 490px;height: 35px;background: transparent;" />
+        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="position: absolute;top: 220px;left: 490px;height: 35px;background-color: rgba(255, 255, 255, 0.3);"input
 
         <p style="position: absolute;top: 325px;left: 120px;font-size: 30px;">New Lineup:</p>
         <label for="newLineupInput" style="position: absolute;top: 370px;left: 120px;font-size: 18px;">New Lineup Name/ID:</label>
-        <input type="text" id="newLineupInput" style="position: absolute;top: 397px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
+        <input type="text" id="newLineupInput" style="position: absolute;top: 397px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;" />
         <label for="newLineupInput2" style="position: absolute;top: 440px;left: 120px;font-size: 18px;">Choose your League:</label>
-        <select type="text" id="newLineupInput2" style="position: absolute;top: 467px;left: 120px;height: 35px;font-size: 15px;background: transparent;border: 4px double black;width: 240px;">
+        <select type="text" id="newLineupInput2" style="position: absolute;top: 467px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;width: 240px;">
             <option value="4">K-1 Basketball</option>
             <option value="4">2-3 Basketball</option>
             <option value="5">4-5 Basketball</option>
@@ -235,19 +235,19 @@
         <input type="image" class="submitButton" src="submitButton.png" style="position: absolute;top: 468px;left: 370px;" onclick="setUpNewLineup()">
     </div>
 
-    <div id ="createLineup" style="display: none">
-    <h1>Create a new lineup</h1>
+    <div id="createLineup" style="display: none;">
+    <p data-brackets-id="6933" style="position: absolute;top: 180px;left: 120px;font-size: 30px;">Create a new lineup</p>
 
-        <label for="newLineupName">Name/ID for new Lineup:</label>
-        <input type="text" id="newLineupName" />
+        <label for="newLineupName" style="position: absolute;top: 260px;left: 120px;font-size: 22px;">Name/ID for new Lineup:</label>
+        <input type="text" id="newLineupName" style="position: absolute;top: 290px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;">
 
-        <label for="playPeriodsInput">Choose your League: </label>
-        <select id="playPeriodsInput">
+        <label for="playPeriodsInput" style="absolute;position: absolute;top: 365px;left: 120px;font-size: 22px;">Choose your League: </label>
+        <select id="playPeriodsInput" style="position: absolute;top: 396px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;width: 240px;">
             <option value="4">K-1 Basketball</option>
             <option value="4">2-3 Basketball</option>
             <option value="5">4-5 Basketball</option>
         </select>
-        <input type="button" value="Submit" class="topButtons" style="background-color:green;" onclick="saveNewLineup()" />
+        <input type="image" class="submitButton" style="position: absolute;top: 397px;left: 370px;" onclick="saveNewLineup()" src="submitButton.png">
     </div>
 
     <div id="reorderDiv" style="display:none">
@@ -276,45 +276,36 @@
         var haveLineup = false;
         var dataJSON;
         var getDataComplete = false;
-
         //local vars
         var benchArrays = [["none"]];
         var playingArrays = [["none"],[],[],[],[],[],["none"],[],[],[],[],[]];
         var reorderArray = [];
-
         //Completion Variables
         var rowsDone = false;
         var cellsDone = false;
         var totalRowDone = false;
         var benchDone = false;
-
         window.onload = init();
-
         function init()
         {
             checkQueryString();
-
             if (!haveCoach)
                 {
                     document.getElementById("EnterCoachID").style.display = "block";
-
                     getFirebaseData();
                 }
             if (haveCoach && !haveLineup)
                 {
                     document.getElementById("ChooseLineup").style.display = "block";
-
                     //Get Firebase list of Lineups
                     getFirebaseData();
                     setLineupList();
-
                 }
             if (haveCoach && haveLineup)
                 {
                     document.getElementById("theContainer").style.display = "block";
                     //Get full Firebase data
                     getFirebaseData();
-
                     createPlayerRows();
                     createPlayerCells();
                     fillPlayerData();
@@ -324,20 +315,17 @@
                     setNumPeriods();
                 }
         }
-
         function checkQueryString()
         {
             if (window.location.search != "")
                 {
                     var tempVars = window.location.search.substring(1).split("&");
                     var tempArray = [];
-
                     for (var i = 0; i < tempVars.length; i++)
                         {
                             tempArray.push(tempVars[i].split("=")[0]);
                             tempArray.push(tempVars[i].split("=")[1]);
                         }
-
                     if (tempArray.indexOf("CoachID") != -1 && tempArray[eval(tempArray.indexOf("CoachID") + 1)] != "")
                         {
                             CoachID = unescape(tempArray[eval(tempArray.indexOf("CoachID") + 1)]);
@@ -350,7 +338,6 @@
                         }
                 }
         }
-
         function getFirebaseData()
         {
             if (!haveCoach)
@@ -375,7 +362,6 @@
                     });
                 }
         }
-
         function createPlayerRows()
         {
             if (getDataComplete)
@@ -400,13 +386,11 @@
                     setTimeout(createPlayerRows, 100);
                 }
         }
-
         function createPlayerCells()
         {
             if (rowsDone)
                 {
                     var rowArray = document.getElementsByClassName("playerRow");
-
                     for (var i = 0; i < rowArray.length; i++)
                         {
                             for (var j = 0; j < 13; j++)
@@ -436,7 +420,6 @@
                     setTimeout(createPlayerCells, 100);
                 }
         }
-
         function fillPlayerData()
         {
             if (cellsDone && getDataComplete)
@@ -446,7 +429,6 @@
                             if (player != "playPeriods")
                                 {
                                     document.getElementById("player" + dataJSON[player].Skill + "Cell0").innerHTML = "<p>" + player + "</p>";
-
                                     for (var j = 1; j < 6; j++)
                                         {
                                             var newCheckbox = document.createElement("input");
@@ -458,12 +440,9 @@
                                                 {
                                                     newCheckbox.setAttribute("checked", "checked");
                                                 }
-
                                             document.getElementById("player" + dataJSON[player].Skill + "Cell" + j).appendChild(newCheckbox);
                                         }
-
                                     document.getElementById("player" + dataJSON[player].Skill + "Cell6").innerHTML = "<p>|</p>";
-
                                     for (var j = 7; j < 12; j++)
                                         {
                                             var newCheckbox = document.createElement("input");
@@ -481,14 +460,12 @@
                         }
                     document.getElementById("mainHeader").innerHTML += " for " + currentLineup;
                     document.getElementById("assignmentsList").innerHTML += ": (" + (Object.keys(dataJSON).length - 1) + " players)";
-
                 }
             else
                 {
                     setTimeout(fillPlayerData, 100);
                 }
         }
-
         function createTotalRow()
         {
             if (cellsDone && getDataComplete)
@@ -497,7 +474,6 @@
                     newRow.id = "totalRow";
                     newRow.className = "totalRow";
                     document.getElementById("firstTable").appendChild(newRow);
-
                     for (var j = 0; j < 13; j++)
                                 {
                                     var newCell = document.createElement("div");
@@ -525,7 +501,6 @@
                     setTimeout(createTotalRow, 100);
                 }
         }
-
         function fillTotals()
         {
             if (totalRowDone)
@@ -584,7 +559,6 @@
                     setTimeout(setUpBench, 100);
                 }
         }
-
         function setNumPeriods()
         {
             if (totalRowDone && benchDone)
@@ -592,7 +566,6 @@
                     if (dataJSON.playPeriods == 4)
                         {
                             var tempArray = $('[hide1st]');
-
                             for (var i = 0; i < tempArray.length; i++)
                                 {
                                     tempArray[i].setAttribute("hide1st", "true");
@@ -605,7 +578,6 @@
                     setTimeout(setNumPeriods,100);
                 }
         }
-
         function updateBench()
         {
             for (var j = 1; j < 12; j++)
@@ -613,7 +585,6 @@
                     if (j != 6)
                         {
                             document.getElementById("benchCell" + j).innerHTML = "";
-
                             for (var k = 0; k < benchArrays[j].length; k++)
                                 {
                                     var newP = document.createElement("p");
@@ -623,7 +594,6 @@
                         }
                 }
         }
-
         function checkboxHandler(e)
         {
             var playerNum = e.id.split("Cell")[0].split("player")[1];
@@ -631,7 +601,6 @@
             var playerName = document.getElementById(e.id.split("Cell")[0] + "Cell0").firstChild.innerHTML;
             var playerTotal = parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML);
             var columnTotal = parseInt(document.getElementById("totalCell" + columnNum).innerHTML);
-
             if (e.checked == true)
                 {
                     document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "black";
@@ -649,10 +618,8 @@
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "#d4d4f7";
                                 }
                         }
-
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal + 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal + 1;
-
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) < 5)
                         {
                             document.getElementById("totalCell" + columnNum).style.backgroundColor = "gray";
@@ -665,11 +632,9 @@
                         {
                             document.getElementById("totalCell" + columnNum).style.backgroundColor = "#cd5c5c";
                         }
-
                     //addToLineup
                     playingArrays[columnNum].push(dataJSON[playerName]);
                     updateLineup();
-
                     //removeFromBench
                     for (var i = 0; i < benchArrays[columnNum].length; i++)
                     {
@@ -683,7 +648,6 @@
             if (e.checked == false)
                 {
                     document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "white";
-
                     if (columnNum != 5 && columnNum != 11)
                         {
                             if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "#d4d4f7")
@@ -698,10 +662,8 @@
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white";
                                 }
                         }
-
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal - 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal - 1;
-
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) < 5)
                         {
                             document.getElementById("totalCell" + columnNum).style.backgroundColor = "gray";
@@ -714,7 +676,6 @@
                         {
                             document.getElementById("totalCell" + columnNum).style.backgroundColor = "#cd5c5c";
                         }
-
                     //remove from lineup
                     for (var i = 0; i < playingArrays[columnNum].length; i++)
                     {
@@ -724,7 +685,6 @@
                         }
                     }
                     updateLineup();
-
                     //add to bench
                     benchArrays[columnNum].push(dataJSON[playerName]);
                     updateBench();
@@ -743,11 +703,9 @@
                         }
             updateTotal();
         }
-
         function updateTotal()
         {
             var runningTotal = 0;
-
             for (var player in dataJSON)
                     {
                         if (player != "playPeriods")
@@ -755,7 +713,6 @@
                                 runningTotal += parseInt(document.getElementById("player" + dataJSON[player].Skill + "Cell12").innerHTML);
                             }
                     }
-
             document.getElementById("totalCell12").innerHTML = runningTotal;
         }
         function updateLineup()
@@ -774,7 +731,6 @@
                                 {
                                     document.getElementById("playingCell" + l + "x" + j).innerHTML = "";
                                 }
-
                             for (var k = 0; k < playingArrays[j].length; k++)
                                 {
                                     if (k < 5)
@@ -785,7 +741,6 @@
                         }
                 }
         }
-
         function setLineupList()
         {
             if (getDataComplete == true)
@@ -803,19 +758,15 @@
                     setTimeout(setLineupList, 100);
                 }
         }
-
         function navToLineup()
         {
             document.getElementById("coachInput").value = CoachID;
             document.getElementById("lineupInput").value = document.getElementById("lineupSelector").value;
             document.getElementById("coachSubmit").click();
-
         }
-
         function setUpNewCoach()
         {
             var alreadyTaken = false;
-
             for (var coach in dataJSON)
                 {
                     if (coach == document.getElementById("newCoachID").value)
@@ -823,7 +774,6 @@
                             alreadyTaken = true;
                         }
                 }
-
             if (alreadyTaken || document.getElementById("newCoachID").value == "")
                 {
                     alert("Invalid CoachID");
@@ -834,13 +784,11 @@
                     document.getElementById("createLineup").style.display = "block";
                 }
         }
-
         function saveNewLineup()
         {
             var newCoach = unescape(document.getElementById("newCoachID").value).split("/").join();
             var newLineup = unescape(document.getElementById("newLineupName").value).split("/").join();
             var newPlayPeriods = document.getElementById("playPeriodsInput").value.split("/").join();
-
             if (newLineup != "" && newPlayPeriods != "")
                 {
                     firebase.database().ref(newCoach + "/" + newLineup).update({
@@ -852,12 +800,10 @@
                     alert("Please Fill In All Fields");
                 }
         }
-
         function setUpNewLineup()
         {
             var newLineup = unescape(document.getElementById("newLineupInput").value).split("/").join();
             var newPlayPeriods = document.getElementById("newLineupInput2").value.split("/").join();
-
             if (newLineup != "" && newPlayPeriods != "")
                 {
                     firebase.database().ref(CoachID + "/" + newLineup).update({
@@ -869,18 +815,15 @@
                     alert("Please Fill In All Fields");
                 }
         }
-
         function addNewPlayer()
         {
             document.getElementById("newPlayerDiv").style.display = "block";
         }
-
         function saveNewPlayer()
         {
             var newCount = 0;
             var alreadyExists = false;
             var newPlayer = document.getElementById("newPlayerName").value.split("/").join();
-
             for (var player in dataJSON)
                 {
                     if (player != "playPeriods")
@@ -892,7 +835,6 @@
                             newCount++;
                         }
                 }
-
             if (alreadyExists || newPlayer == "playPeriods" || newPlayer == "")
                 {
                     alert("Invalid Name, Try Again");
@@ -907,7 +849,6 @@
                 }
             //save the new player
         }
-
         function saveLineup()
         {
             for (var player in dataJSON)
@@ -934,30 +875,24 @@
                                         }
                                 }
                             tempString += ",0";
-
-
                             firebase.database().ref(CoachID + "/" + currentLineup + "/" + player).update({
                                 "Checkboxes": tempString,
                             });
                         }
                 }
         }
-
         function copyLineup()
         {
             var copyToLineup = prompt("Please enter lineup name/ID to copy to. | Note: This will create a new lineup if there is not one, and it will overwrite existing lineups.").split("/").join();
-
             if (copyToLineup == "" || copyToLineup == "playPeriods")
                 {
                     alert("Invalid Name");
-
                 }
             else
                 {
                     firebase.database().ref(CoachID + "/" + copyToLineup).update({
                                 "playPeriods": dataJSON.playPeriods,
                             });
-
                     var numLoops = 1;
                     for (player in dataJSON)
                         {
@@ -979,7 +914,6 @@
                                             }
                                     else
                                         {
-
                                             firebase.database().ref(CoachID + "/" + copyToLineup + "/" + player).update({
                                                 "Checkboxes": dataJSON[player].Checkboxes,
                                                 "Skill": dataJSON[player].Skill,
@@ -991,27 +925,22 @@
                         }
                 }
         }
-
         function backtoCoach()
         {
             window.location.search = "?CoachID=" + CoachID;
         }
-
         function deleteLineup()
         {
             var lineupToDelete = document.getElementById("lineupSelector").value;
             var decision = confirm("Are you sure you wish to delete " + lineupToDelete + "? This action cannot be undone.");
-
             if (decision)
                 {
                     firebase.database().ref(CoachID + "/" + lineupToDelete).remove(function(){backtoCoach();});
                 }
         }
-
         function deletePlayer()
         {
             document.getElementById("removePlayerDiv").style.display = "block";
-
             for (var player in dataJSON)
                         {
                             if (player != "playPeriods")
@@ -1023,18 +952,14 @@
                                 }
                         }
         }
-
         function removePlayer()
         {
             var playerToDelete = unescape(document.getElementById("removePlayerName").value);
             var decision = confirm("Are you sure you wish to delete " + playerToDelete + "? This action cannot be undone.");
-
             if (decision)
                 {
                     var tempArray =[];
-
                     delete dataJSON[playerToDelete];
-
                     for (var player in dataJSON)
                         {
                             if (player != "playPeriods")
@@ -1045,13 +970,10 @@
                     tempArray.sort(function (a, b) {
                                       return a.Skill - b.Skill;
                                     });
-
                     for (var i = 0; i < tempArray.length; i++)
                         {
                             dataJSON[tempArray[i].Name].Skill = i;
-
                         }
-
                     for (var player in dataJSON)
                         {
                             if (player != "playPeriods")
@@ -1062,20 +984,16 @@
                                 }
                         }
                 }
-
             if (decision && playerToDelete != "playPeriods" && playerToDelete != "")
                 {
                     firebase.database().ref(CoachID + "/" + currentLineup + "/" + playerToDelete).remove(function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup});
                 }
         }
-
         function reorderPlayer()
         {
             document.getElementById("reorderDiv").style.display = "block";
             document.getElementById("theContainer").style.display = "none";
-
             var tempArray = []
-
             for (var player in dataJSON)
                 {
                     if (player != "playPeriods")
@@ -1083,57 +1001,45 @@
                             tempArray.push(dataJSON[player]);
                         }
                 }
-
             tempArray.sort(function (a, b) {
                               return a.Skill - b.Skill;
                             });
-
             reorderArray = [];
-
             var newADiv = document.createElement("div");
             newADiv.id = "ADiv";
             document.getElementById("reorderContainer").appendChild(newADiv);
-
             var newBDiv = document.createElement("div");
             newBDiv.id = "BDiv";
             document.getElementById("reorderContainer").appendChild(newBDiv);
-
             for (var i = 0; i < tempArray.length; i++)
                 {
                     reorderArray.push(tempArray[i].Name);
-
                      var newP = document.createElement("p");
                     newP.style.display = "inline";
                     newP.style.margin = "10px";
                     newP.innerHTML = tempArray[i].Name;
                     document.getElementById("ADiv").appendChild(newP);
-
                     var newUp = document.createElement("input");
                     newUp.type = "button";
                     newUp.value = String.fromCharCode(8593);
                     newUp.id = tempArray[i].Name + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("BDiv").appendChild(newUp);
-
                     var newDown = document.createElement("input");
                     newDown.type = "button";
                     newDown.value = String.fromCharCode(8595);
                     newDown.id = tempArray[i].Name + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("BDiv").appendChild(newDown);
-
                     document.getElementById("ADiv").appendChild(document.createElement("br"));
                     document.getElementById("BDiv").appendChild(document.createElement("br"));
                 }
-
         }
-
         function movePlayer(e)
         {
             var playerToMove = e.id.split("Up")[0].split("Down")[0];
             var direction = e.id.split(playerToMove)[1];
             console.log(playerToMove + " goes " + direction);
-
             if (direction == "Up")
                 {
                     // move up
@@ -1150,49 +1056,39 @@
                     index++;
                     reorderArray.splice(index,0,playerToMove);
                 }
-
             while(document.getElementById("reorderContainer").hasChildNodes())
                 {
                     document.getElementById("reorderContainer").removeChild(document.getElementById("reorderContainer").lastChild);
                 }
-
             var newADiv = document.createElement("div");
             newADiv.id = "ADiv";
             document.getElementById("reorderContainer").appendChild(newADiv);
-
             var newBDiv = document.createElement("div");
             newBDiv.id = "BDiv";
             document.getElementById("reorderContainer").appendChild(newBDiv);
-
             for (var i = 0; i < reorderArray.length; i++)
                 {
-
                      var newP = document.createElement("p");
                     newP.style.display = "inline";
                     newP.style.margin = "10px";
                     newP.innerHTML = reorderArray[i];
                     document.getElementById("ADiv").appendChild(newP);
-
                     var newUp = document.createElement("input");
                     newUp.type = "button";
                     newUp.value = String.fromCharCode(8593);
                     newUp.id = reorderArray[i] + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("BDiv").appendChild(newUp);
-
                     var newDown = document.createElement("input");
                     newDown.type = "button";
                     newDown.value = String.fromCharCode(8595);
                     newDown.id = reorderArray[i] + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
                     document.getElementById("BDiv").appendChild(newDown);
-
                     document.getElementById("ADiv").appendChild(document.createElement("br"));
                     document.getElementById("BDiv").appendChild(document.createElement("br"));
                 }
-
         }
-
         function saveReorder()
         {
             for (var i = 0; i < reorderArray.length; i++)
@@ -1204,16 +1100,13 @@
                                         });
                 }
         }
-
         function clearCheckboxes()
         {
             $('input[type="checkbox"]:checked').each(function () {this.click();});
         }
-
         function colorRow(e)
         {
             var playerNumber = e.id.split("Cell")[0];
-
             if (document.getElementById(playerNumber + "Row").style.borderColor == "")
                 {
                     document.getElementById(playerNumber + "Row").style.borderColor = "yellow";
@@ -1223,7 +1116,6 @@
                     document.getElementById(playerNumber + "Row").style.borderColor = "";
                 }
         }
-
         function highlightColumn(colNum)
         {
             for (player in dataJSON)
@@ -1241,7 +1133,6 @@
                         }
                 }
         }
-
         //Feature Requests
         /*
             1. after the 5 for a period is selected, the three who didn't play are highlighted in the next column, so you know that you have to select them.
