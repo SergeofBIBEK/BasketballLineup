@@ -218,21 +218,21 @@
     </div>
 
     <div id ="ChooseLineup" style="display: none">
-        <h1>Choose a Lineup:</h1>
-        <select id="lineupSelector"></select>
-        <input type="button" value="Submit" class="topButtons" onclick="navToLineup()" style="background-color:green;" />
-        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="background-color:red;" />
+        <p style="position: absolute;top: 180px;left: 120px;font-size: 30px;">Choose a Lineup:</p>
+        <select id="lineupSelector" style="position: absolute;top: 218px;left: 120px;height: 35px;font-size: 15px;background: transparent;border: 4px double black;width: 240px;"></select>
+        <input type="image" class="submitButton" src="submitButton.png" onclick="navToLineup()" style="position: absolute;top: 220px;left: 370px;" />
+        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="position: absolute;top: 220px;left: 490px;height: 35px;background: transparent;" />
 
-        <h3>New Lineup:</h3>
-        <label for="newLineupInput">New Lineup Name/ID</label>
-        <input type="text" id="newLineupInput" />
-        <label for="newLineupInput2">Choose your League:</label>
-        <select type="text" id="newLineupInput2" >
+        <p style="position: absolute;top: 325px;left: 120px;\font-size: 30px;">New Lineup:</p>
+        <label for="newLineupInput" style="position: absolute;top: 370px;left: 120px;font-size: 18px;">New Lineup Name/ID:</label>
+        <input type="text" id="newLineupInput" style="position: absolute;top: 397px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
+        <label for="newLineupInput2" style="position: absolute;top: 440px;left: 120px;font-size: 18px;">Choose your League:</label>
+        <select type="text" id="newLineupInput2" style="position: absolute;top: 467px;left: 120px;height: 35px;font-size: 15px;background: transparent;border: 4px double black;width: 240px;">
             <option value="4">K-1 Basketball</option>
             <option value="4">2-3 Basketball</option>
             <option value="5">4-5 Basketball</option>
         </select>
-        <input type="button" value="Submit" class="topButtons" style="background-color:green;" onclick="setUpNewLineup()">
+        <input type="image" class="submitButton" src="submitButton.png" style="position: absolute;top: 468px;left: 370px;" onclick="setUpNewLineup()">
     </div>
 
     <div id ="createLineup" style="display: none">
