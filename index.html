@@ -201,17 +201,17 @@
         <p style="position: absolute;top: 233px;left: 120px;font-size: 20px;">Optional: Enter your LineupID</p>
         <form method="get">
         <label for="coachInput" id="coachInputLabel" style="position: absolute;top: 295px;left: 120px;font-size: 22px;">CoachID:</label>
-        <input type="text" name="CoachID" id="coachInput" style="position: absolute;top: 325px;left: 120px;height: 35px;width: 240px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;font-size: 18px;" />
+        <input type="text" name="CoachID" id="coachInput" style="position: absolute;top: 325px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
 
         <label for="lineupInput" id="lineupInputLabel" style="position: absolute;top: 367px;left: 120px;font-size: 22px;">LineupID:</label>
-        <input type="text" name="LineupID" id="lineupInput" style="position: absolute;top: 396px;left: 120px;height: 35px;width: 240px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;font-size: 18px;" />
+        <input type="text" name="LineupID" id="lineupInput" style="position: absolute;top: 396px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
 
         <input type="image" class="submitButton" src="submitButton.png" id="coachSubmit" style="position: absolute;top: 398px;left: 400px;" />
         </form>
 
         <p style="position: absolute;top: 510px;left: 120px;height: 30px;font-size: 20px;">New? Set up a new CoachID</p>
         <label for="newCoachID" style="position: absolute;top: 543px;left: 120px;font-size: 22px;">New CoachID</label>
-        <input type="text" id="newCoachID" style="position: absolute;top: 572px;left: 120px;height: 35px;width: 240px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;font-size: 18px;" />
+        <input type="text" id="newCoachID" style="position: absolute;top: 572px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
         <input type="image" class="submitButton" src="submitButton.png" onclick="setUpNewCoach()" style="position: absolute;top: 575px;left: 400px;" />
         <p style="position: absolute;top: 619px;left: 120px;font-size: 21px;color: #ad0505;width: 365px;">Note: Make CoachID hard to guess and do not share it with other coaches.</p>
 
@@ -219,15 +219,15 @@
 
     <div id ="ChooseLineup" style="display: none">
         <p style="position: absolute;top: 180px;left: 120px;font-size: 30px;">Choose a Lineup:</p>
-        <select id="lineupSelector" style="position: absolute;top: 218px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;width: 240px;"></select>
+        <select id="lineupSelector" style="position: absolute;top: 218px;left: 120px;height: 35px;font-size: 15px;background: transparent;border: 4px double black;width: 240px;"></select>
         <input type="image" class="submitButton" src="submitButton.png" onclick="navToLineup()" style="position: absolute;top: 220px;left: 370px;" />
-        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="position: absolute;top: 220px;left: 490px;height: 35px;background-color: rgba(0, 0, 0, 0.3);" />
+        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="position: absolute;top: 220px;left: 490px;height: 35px;background: transparent;" />
 
-        <p style="position: absolute;top: 325px;left: 120px;\font-size: 30px;">New Lineup:</p>
+        <p style="position: absolute;top: 325px;left: 120px;font-size: 30px;">New Lineup:</p>
         <label for="newLineupInput" style="position: absolute;top: 370px;left: 120px;font-size: 18px;">New Lineup Name/ID:</label>
-        <input type="text" id="newLineupInput" style="position: absolute;top: 397px;left: 120px;height: 35px;width: 240px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;font-size: 18px;" />
+        <input type="text" id="newLineupInput" style="position: absolute;top: 397px;left: 120px;height: 35px;width: 240px;background: transparent;border: 4px double black;" />
         <label for="newLineupInput2" style="position: absolute;top: 440px;left: 120px;font-size: 18px;">Choose your League:</label>
-        <select type="text" id="newLineupInput2" style="position: absolute;top: 467px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;width: 240px;">
+        <select type="text" id="newLineupInput2" style="position: absolute;top: 467px;left: 120px;height: 35px;font-size: 15px;background: transparent;border: 4px double black;width: 240px;">
             <option value="4">K-1 Basketball</option>
             <option value="4">2-3 Basketball</option>
             <option value="5">4-5 Basketball</option>
@@ -235,19 +235,19 @@
         <input type="image" class="submitButton" src="submitButton.png" style="position: absolute;top: 468px;left: 370px;" onclick="setUpNewLineup()">
     </div>
 
-    <div id="createLineup" style="display: none;">
-    <p data-brackets-id="6933" style="position: absolute;top: 180px;left: 120px;font-size: 30px;">Create a new lineup</p>
+    <div id ="createLineup" style="display: none">
+    <h1>Create a new lineup</h1>
 
-        <label for="newLineupName" style="position: absolute;top: 260px;left: 120px;font-size: 22px;">Name/ID for new Lineup:</label>
-        <input type="text" id="newLineupName" style="position: absolute;top: 290px;left: 120px;height: 35px;width: 240px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;font-size: 18px;">
+        <label for="newLineupName">Name/ID for new Lineup:</label>
+        <input type="text" id="newLineupName" />
 
-        <label for="playPeriodsInput" style="absolute;position: absolute;top: 365px;left: 120px;font-size: 22px;">Choose your League: </label>
-        <select id="playPeriodsInput" style="position: absolute;top: 396px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(0, 0, 0, 0.3);border: 4px double black;width: 240px;">
+        <label for="playPeriodsInput">Choose your League: </label>
+        <select id="playPeriodsInput">
             <option value="4">K-1 Basketball</option>
             <option value="4">2-3 Basketball</option>
             <option value="5">4-5 Basketball</option>
         </select>
-        <input type="image" class="submitButton" style="position: absolute;top: 397px;left: 370px;" onclick="saveNewLineup()" src="submitButton.png">
+        <input type="button" value="Submit" class="topButtons" style="background-color:green;" onclick="saveNewLineup()" />
     </div>
 
     <div id="reorderDiv" style="display:none">
