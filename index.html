@@ -31,7 +31,7 @@
         <link rel="stylesheet" href="main.css">
     </head>
 <body>
-
+<div id="EverythingDiv">
     <div id="navHeader" onclick="backToHome()"><p id="titleText">Line 'em Up</p><p id="subtitleText">Lineup Generator</p></div>
     <div class="theContainer" id="theContainer" style="display: none">
         <input type="button" id="backToCoachButton" value="&#x21E6 Back to Lineup List" onclick="backtoCoach()" />
@@ -266,7 +266,7 @@
     </form>
     </div>
 
-
+    </div>
     <script>
         //firebase vars
         var database = firebase.database();
@@ -608,29 +608,29 @@
                         {
                             if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "")
                                 {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "#d4d4f7";
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "#d5e3ec";
                                 }
                         }
                     if (columnNum == 5)
                         {
                             if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "")
                                 {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "#d4d4f7";
+                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "#d5e3ec";
                                 }
                         }
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal + 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal + 1;
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) < 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "gray";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#5d5e5f";
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) == 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#6bb300";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#6b897c";
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) > 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#cd5c5c";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#8f3e02";
                         }
                     //addToLineup
                     playingArrays[columnNum].push(dataJSON[playerName]);
@@ -650,14 +650,14 @@
                     document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "white";
                     if (columnNum != 5 && columnNum != 11)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "#d4d4f7")
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "#d5e3ec")
                                 {
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "white";
                                 }
                         }
                     if (columnNum == 5)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "#d4d4f7")
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "#d5e3ec")
                                 {
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white";
                                 }
@@ -666,15 +666,15 @@
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal - 1;
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) < 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "gray";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#5d5e5f";
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) == 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#6bb300";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#6b897c";
                         }
                     if (parseInt(document.getElementById("totalCell" + columnNum).innerHTML) > 5)
                         {
-                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#cd5c5c";
+                            document.getElementById("totalCell" + columnNum).style.backgroundColor = "#8f3e02";
                         }
                     //remove from lineup
                     for (var i = 0; i < playingArrays[columnNum].length; i++)
@@ -691,15 +691,15 @@
                 }
             if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) == Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
                         {
-                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "#6bb300";
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "#6b897c";
                         }
                     if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) < Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
                         {
-                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "gray";
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "#5d5e5f";
                         }
                     if (parseInt(document.getElementById("player" + playerNum + "Cell12").innerHTML) > Math.round((dataJSON.playPeriods * 10)/(Object.keys(dataJSON).length - 1)))
                         {
-                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "#cd5c5c";
+                            document.getElementById("player" + playerNum + "Cell12").style.backgroundColor = "#8f3e02";
                         }
             updateTotal();
         }
@@ -714,6 +714,22 @@
                             }
                     }
             document.getElementById("totalCell12").innerHTML = runningTotal;
+
+
+            if (parseInt(document.getElementById("totalCell12").innerHTML) < (dataJSON.playPeriods * 10))
+                {
+                    document.getElementById("totalCell12").style.backgroundColor = "#5d5e5f";
+                }
+            if (parseInt(document.getElementById("totalCell12").innerHTML) == (dataJSON.playPeriods * 10))
+                {
+                    document.getElementById("totalCell12").style.backgroundColor = "#6b897c";
+                }
+            if (parseInt(document.getElementById("totalCell12").innerHTML) > (dataJSON.playPeriods * 10))
+                {
+                    document.getElementById("totalCell12").style.backgroundColor = "#8f3e02";
+                }
+
+
         }
         function updateLineup()
         {

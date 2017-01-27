@@ -160,12 +160,12 @@ p
 
 .topButtons:hover
 {
-    border-width: 2px;
+    outline: 1px solid #de5c18;
 }
 
 .topButtons:active
 {
-    transform: translateY(4px);
+    transform: transform: scale(0.9);
 }
 
 #backToCoachButton
@@ -178,16 +178,35 @@ p
 }
 #backToCoachButton:hover
 {
-    border-width: 2px;
+    outline: 1px solid #de5c18;
 }
 #backToCoachButton:active
 {
-    transform: translateY(4px);
+    transform: scale(0.9);
 }
-
 select
 {
-    height: 20px;
+    outline: none;
+}
+select:hover
+{
+    outline: 4px double #de5c18;
+}
+select:active
+{
+    outline: 2px solid #de5c18;
+}
+input[type="text"]
+{
+    outline: none;
+}
+input[type="text"]:hover
+{
+    outline: 4px double #de5c18;
+}
+input[type="text"]:active
+{
+    outline: 2px solid #de5c18;
 }
 #reorderContainer
 {
@@ -210,11 +229,11 @@ select
 }
 .submitButton:hover
 {
-    border-width: 2px;
+    outline: 1px solid #de5c18;
 }
 .submitButton:active
 {
-    transform: translateY(4px);
+    transform: scale(0.9);
 }
 #supportButton
 {
