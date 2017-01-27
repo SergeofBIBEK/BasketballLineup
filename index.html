@@ -32,7 +32,7 @@
     </head>
 <body>
 
-    <div id="navHeader"><p id="titleText">Line 'em Up</p><p id="subtitleText">Lineup Generator</p></div>
+    <div id="navHeader" onclick="backToHome()"><p id="titleText">Line 'em Up</p><p id="subtitleText">Lineup Generator</p></div>
     <div class="theContainer" id="theContainer" style="display: none">
         <input type="button" id="backToCoachButton" value="&#x21E6 Back to Lineup List" onclick="backtoCoach()" />
 
@@ -1132,6 +1132,11 @@
                                 }
                         }
                 }
+        }
+
+        function backToHome()
+        {
+            window.location.search = "";
         }
         //Feature Requests
         /*
