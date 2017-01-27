@@ -243,3 +243,11 @@ input[type="text"]:active
     z-index: 2;
     color: white;
 }
+#theContainer
+{
+    background-image: url(lineupBackground.png);
+    background-repeat: round;
+    width: 978px;
+    height: 990px;
+    position: absolute;
+}

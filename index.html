@@ -34,14 +34,16 @@
 <div id="EverythingDiv">
     <div id="navHeader" onclick="backToHome()"><p id="titleText">Line 'em Up</p><p id="subtitleText">Lineup Generator</p></div>
     <div class="theContainer" id="theContainer" style="display: none">
-        <input type="button" id="backToCoachButton" value="&#x21E6 Back to Lineup List" onclick="backtoCoach()" />
+        <input type="image" src="backToCoachButton.png" id="backToCoachButton" onclick="backtoCoach()" />
+
+        <img src="goal.png" style="position: absolute;left: 727px;transform: scale(1.2);top: 20px;" />
 
         <h1 id="mainHeader" style="margin:20px;">Lineup</h1>
         <h2 id="assignmentsList" style="margin:5px;">Assignments</h2>
 
-        <input type="button" id="clearButton" class="topButtons" value="&#x232b; Clear" onclick="clearCheckboxes()" style="background-color:yellow;color:black;padding: 7px 10px;" />
-        <input type="button" id="saveLineupButton" class="topButtons" value="&#x1f4cb; Copy Lineup" onclick="copyLineup()" style="background-color:blue;color:white;" />
-        <input type="button" id="saveLineupButton" class="topButtons" value="&#x1f4be; Save Lineup" onclick="saveLineup()" style="background-color:green;color:white;" />
+        <input type="image" src="clearButton.png" id="clearButton" onclick="clearCheckboxes()" />
+        <input type="image" id="copyLineupButton" src="copyLineupButton.png" onclick="copyLineup()" />
+        <input type="image" id="saveLineupButton" src="saveLineupButton.png" onclick="saveLineup()" />
 
         <div class="firstTable" id="firstTable">
             <div id="titleRow" class="titleRow">
@@ -60,12 +62,12 @@
                 <div class="titleCell"><p>Totals</p></div>
             </div>
         </div>
-        <input type="button" id="newPlayerButton" value="+" onclick="addNewPlayer()" style="background-color:green;color:white;border-radius:100%;font-size: larger;height: 35px;width: 35px;" />
-        <label for="newPlayerButton">Add a Player</label>
-        <input type="button" id="deletePlayerButton" value="-" onclick="deletePlayer()" style="background-color:red;color:white;border-radius:100%;font-size: larger;height: 35px;width: 35px;" />
-        <label for="deletePlayerButton">Remove a Player</label>
-        <input type="button" id="reorderPlayerButton" value="&#x21c5;" onclick="reorderPlayer()" style="background-color:blue;color:white;border-radius:100%;font-size: larger;height: 35px;width: 35px;" />
-        <label for="reorderPlayerButton">Reorder Players</label>
+        <input type="image" id="newPlayerButton" onclick="addNewPlayer()" src="addPlayerButton.png" />
+
+        <input type="image" id="deletePlayerButton" onclick="deletePlayer()" src="removePlayerButton.png" />
+
+        <input type="image" id="reorderPlayerButton" onclick="reorderPlayer()" src="reorderPlayerButton.png" />
+
         <div id="newPlayerDiv" style="display: none">
 
             <label for="newPlayerName">New Player Name</label>
