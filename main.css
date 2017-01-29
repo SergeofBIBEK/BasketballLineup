@@ -400,6 +400,11 @@ input[type="image"]:active
             background-color: white !important;
         }
 
+    .benchCell
+        {
+            background-color: white;
+        }
+
     #navHeader
         {
             background-color: white;
@@ -412,8 +417,24 @@ input[type="image"]:active
             color: black;
             font-size: 50px;
         }
+
     #supportButton
-    {
-        display: none;
-    }
+        {
+            display: none;
+        }
+
+    .titleRow
+        {
+            background-image: none;
+        }
+
+    .playerNameCell
+        {
+            background-color: white;
+        }
+
+    [halftime="true"]
+        {
+            background-color: white;
+        }
 }
