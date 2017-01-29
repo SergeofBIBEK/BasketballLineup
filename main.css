@@ -10,6 +10,12 @@ body
         font-family: sans-serif;
         background-color: black;
     }
+#everythingDiv
+    {
+        width: 978px;
+        margin: auto;
+    }
+
 #navHeader
     {
         background-color: black;
@@ -251,7 +257,6 @@ input[type="image"]:active
 #supportButton
     {
         position: absolute;
-        left: 800px;
         z-index: 2;
         color: white;
     }
