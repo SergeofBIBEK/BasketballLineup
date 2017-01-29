@@ -840,7 +840,7 @@
                 {
                     firebase.database().ref(CoachID + "/" + newLineup).update({
                         "playPeriods": newPlayPeriods,
-                    },function(){window.location.search = "?CoachID=" + newCoach + "&LineupID=" + newLineup;});
+                    },function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + newLineup;});
                 }
             else
                 {
