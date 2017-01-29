@@ -33,13 +33,13 @@
 <body>
 <div id="EverythingDiv">
     <div id="navHeader" onclick="backToHome()"><p id="titleText">Line 'em Up</p><p id="subtitleText">Lineup Generator</p></div>
-    <div class="theContainer" id="theContainer" style="display: none">
+    <div class="theContainer" id="theContainer" style="height:780px;display: none">
         <input type="image" src="backToCoachButton.png" id="backToCoachButton" onclick="backtoCoach()" />
 
         <img src="goal.png" style="position: absolute;left: 727px;transform: scale(1.2);top: 20px;" />
 
-        <h1 id="mainHeader" style="margin:20px;">Lineup</h1>
-        <h2 id="assignmentsList" style="margin:5px;">Assignments</h2>
+        <p id="mainHeader">Lineup</p>
+        <p id="assignmentsList">Assignments</p>
 
         <input type="image" src="clearButton.png" id="clearButton" onclick="clearCheckboxes()" />
         <input type="image" id="copyLineupButton" src="copyLineupButton.png" onclick="copyLineup()" />
@@ -83,8 +83,8 @@
 
         </div>
 
-        <br />
-        <h2>Lineup by Play Period</h2>
+        <div id="dynamicHeight" style="position:absolute;top: 330px;width: 100%;height: 100%;">
+        <p style="position: absolute;top: 10px;left: 30px;font-size: 25px;">Lineup by Play Period</p>
         <div class="playingTable" id="playingTable">
             <div id="titleRow" class="titleRow">
                 <div class="titleCell" hide1st="false"><p>20-16 Minutes</p></div>
@@ -166,8 +166,7 @@
             </div>
 
         </div>
-        <br />
-        <h2>Bench by Play Period</h2>
+        <p style="position: absolute;top: 220px;left: 30px;font-size: 25px;">Bench by Play Period</p>
         <div class="benchTable" id="benchTable">
             <div id="titleRow" class="titleRow">
                 <div class="titleCell" hide1st="false"><p>20-16 Minutes</p></div>
@@ -195,6 +194,7 @@
                 <div class="benchCell" id="benchCell10"></div>
                 <div class="benchCell" id="benchCell11"></div>
             </div>
+        </div>
         </div>
     </div>
 
@@ -253,12 +253,13 @@
     </div>
 
     <div id="reorderDiv" style="display:none">
-        <h1>Reorder Players</h1>
-        <div id="reorderContainer"></div>
+        <p style="font-size:30px;">Reorder Players</p>
+        <div id="reorderContainer" style="transform: scale(1.5);padding: 50px"></div>
+        <br />
         <input type="button" value="Save" class="topButtons" style="background-color:green;" onclick="saveReorder()" />
     </div>
 
-    <div id="supportButton">
+    <div id="supportButton" style="top: 875px;">
     <p>Support the Developer?</p>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">
@@ -555,6 +556,18 @@
                         }
                     updateBench();
                     benchDone = true;
+
+            var currentTop = parseInt(document.getElementById("dynamicHeight").style.top);
+            currentTop += (Object.keys(dataJSON).length - 1) * 20;
+            document.getElementById("dynamicHeight").style.top = currentTop;
+
+            var currentHeight = parseInt(document.getElementById("theContainer").style.height);
+            currentHeight += (Object.keys(dataJSON).length - 1) * 30;
+            document.getElementById("theContainer").style.height = currentHeight;
+
+            var supportTop = parseInt(document.getElementById("supportButton").style.top);
+            supportTop += (Object.keys(dataJSON).length - 1) * 30;
+            document.getElementById("supportButton").style.top = supportTop;
                 }
             else
                 {
@@ -836,6 +849,7 @@
         function addNewPlayer()
         {
             document.getElementById("newPlayerDiv").style.display = "block";
+            document.getElementById("removePlayerDiv").style.display = "none";
         }
         function saveNewPlayer()
         {
@@ -959,6 +973,7 @@
         function deletePlayer()
         {
             document.getElementById("removePlayerDiv").style.display = "block";
+            document.getElementById("newPlayerDiv").style.display = "none";
             for (var player in dataJSON)
                         {
                             if (player != "playPeriods")
