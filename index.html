@@ -70,16 +70,16 @@
 
         <div id="newPlayerDiv" style="display: none">
 
-            <label for="newPlayerName">New Player Name</label>
-            <input type="text" id="newPlayerName" />
-            <input type="button" id="newPlayerSubmit" class="topButtons" style="background-color:green;" value="Save" onclick="saveNewPlayer()" />
+            <label for="newPlayerName">New Player Name:</label>
+            <input type="text" id="newPlayerName" style="background-color: rgba(255, 255,255, 0.3);border: 4px double black;" />
+            <input type="button" id="newPlayerSubmit" style="height: 30px;background-color: rgba(255, 255, 255, 0.3);" value="Save" onclick="saveNewPlayer()" />
 
         </div>
         <div id="removePlayerDiv" style="display: none">
 
-            <label for="removePlayerName">Player to Remove</label>
-            <select id="removePlayerName" />
-            <input type="button" id="removePlayerSubmit" class="topButtons" value="Remove" style="background-color:red;" onclick="removePlayer()" />
+            <label for="removePlayerName">Player to Remove:</label>
+            <select id="removePlayerName" style="height: 30px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;" />
+            <input type="button" id="removePlayerSubmit" value="Remove" style="height: 30px;background-color: rgba(255, 255, 255, 0.3);" onclick="removePlayer()" />
 
         </div>
 
@@ -462,7 +462,7 @@
                                         }
                                 }
                         }
-                    document.getElementById("mainHeader").innerHTML += " for " + currentLineup;
+                    document.getElementById("mainHeader").innerHTML += " for: " + currentLineup;
                     document.getElementById("assignmentsList").innerHTML += ": (" + (Object.keys(dataJSON).length - 1) + " players)";
                 }
             else
