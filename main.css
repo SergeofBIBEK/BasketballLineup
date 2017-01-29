@@ -52,8 +52,8 @@ p
         display: table;
         position: absolute;
         top: 60px;
-        left: 90px;
-        width: 790px;
+        left: 110px;
+        width: 760px;
     }
 .benchTable
     {
@@ -337,6 +337,18 @@ input[type="image"]:active
         padding: 50px;
     }
 
+.playerCell
+{
+    max-width: 60px;
+    background-color: #d8cfb9;
+   overflow: hidden;
+}
+
+.titleCell
+{
+    max-width: 50px;
+}
+
 
 @media print
 {
@@ -383,4 +395,8 @@ input[type="image"]:active
             color: black;
             font-size: 50px;
         }
+    #supportButton
+    {
+        display: none;
+    }
 }
