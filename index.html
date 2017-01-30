@@ -821,9 +821,9 @@
         }
         function saveNewLineup()
         {
-            var newCoach = unescape(document.getElementById("newCoachID").value).split("/").join();
-            var newLineup = unescape(document.getElementById("newLineupName").value).split("/").join();
-            var newPlayPeriods = document.getElementById("playPeriodsInput").value.split("/").join();
+            var newCoach = unescape(document.getElementById("newCoachID").value).split("/").join("").split(" ").join("");
+            var newLineup = unescape(document.getElementById("newLineupName").value).split("/").join("").split(" ").join("");
+            var newPlayPeriods = document.getElementById("playPeriodsInput").value.split("/").join("").split(" ").join("");
             if (newLineup != "" && newPlayPeriods != "")
                 {
                     firebase.database().ref(newCoach + "/" + newLineup).update({
@@ -837,8 +837,8 @@
         }
         function setUpNewLineup()
         {
-            var newLineup = unescape(document.getElementById("newLineupInput").value).split("/").join();
-            var newPlayPeriods = document.getElementById("newLineupInput2").value.split("/").join();
+            var newLineup = unescape(document.getElementById("newLineupInput").value).split("/").join("").split(" ").join("");
+            var newPlayPeriods = document.getElementById("newLineupInput2").value.split("/").join("").split(" ").join("");
             if (newLineup != "" && newPlayPeriods != "")
                 {
                     firebase.database().ref(CoachID + "/" + newLineup).update({
@@ -859,7 +859,7 @@
         {
             var newCount = 0;
             var alreadyExists = false;
-            var newPlayer = document.getElementById("newPlayerName").value.split("/").join();
+            var newPlayer = unescape(document.getElementById("newPlayerName").value).split("/").join("");
             for (var player in dataJSON)
                 {
                     if (player != "playPeriods")
@@ -919,7 +919,7 @@
         }
         function copyLineup()
         {
-            var copyToLineup = prompt("Please enter lineup name/ID to copy to. | Note: This will create a new lineup if there is not one, and it will overwrite existing lineups.").split("/").join();
+            var copyToLineup = unescape(prompt("Please enter lineup name/ID to copy to. | Note: This will create a new lineup if there is not one, and it will overwrite existing lineups.")).split("/").join("").split(" ").join("");
             if (copyToLineup == "" || copyToLineup == "playPeriods")
                 {
                     alert("Invalid Name");
@@ -967,7 +967,7 @@
         }
         function deleteLineup()
         {
-            var lineupToDelete = document.getElementById("lineupSelector").value;
+            var lineupToDelete = unescape(document.getElementById("lineupSelector").value);
             var decision = confirm("Are you sure you wish to delete " + lineupToDelete + "? This action cannot be undone.");
             if (decision)
                 {
