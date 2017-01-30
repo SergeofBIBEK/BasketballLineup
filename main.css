@@ -29,7 +29,7 @@ body
         font-family: DirtyHeadline;
         color: #d9c3a8;
         margin-left: 80px;
-        z-index: 1;
+        z-index: 10;
     }
 #subtitleText
     {
@@ -37,7 +37,7 @@ body
         font-family: DirtyHeadline;
         color: #fbfaf8;
         margin-left: 30px;
-        z-index: 1;
+        z-index: 10;
     }
 p
     {
@@ -70,12 +70,17 @@ p
         top: 260px;
         left: 110px;
     }
+.benchTable:hover, .playingTable:hover, .firstTable:hover
+{
+    z-index: 3;
+}
 .titleRow
     {
         border: 1px solid black;
         display: table-row;
         background-image: url(titleRowBackground.png);
         background-repeat: round;
+        font-weight: bold;
     }
 .playerRow
     {
@@ -145,6 +150,7 @@ p
         display: table-cell;
         text-align: center;
     }
+
 .benchCell
     {
         border: 1px solid black;
@@ -159,7 +165,8 @@ p
         border: 1px solid black;
         display: table-cell;
         text-align: center;
-        max-width: 60px;
+        /*max-width: 60px;*/
+        max-height: 19px;
         overflow: hidden;
     }
 [hide1st="true"]
@@ -228,7 +235,23 @@ input[type="text"]:active
 
 #reorderContainer
     {
-        display: inline-flex;
+        display: table;
+        border: 1px solid black;
+        width: 150px;
+    }
+
+.reorderRow
+    {
+        display: table-row;
+        border: 1px solid black;
+    }
+
+.reorderCell
+    {
+        overflow: hidden;
+        display: table-cell;
+        border: 1px solid black;
+        background-color: #d8cfb9;
     }
 
 #EnterCoachID, #ChooseLineup, #createLineup
@@ -354,7 +377,7 @@ input[type="image"]:active
 
 .playerNameCell
 {
-    max-width: 60px;
+   /* max-width: 60px;*/
     background-color: #d8cfb9;
     overflow: hidden;
     border: inherit;
@@ -371,6 +394,19 @@ input[type="image"]:active
 .titleCell
 {
     max-width: 50px;
+}
+
+.playerNameP
+{
+    max-height: 19px;
+    max-width: 60px;
+}
+
+.playerNameP:hover
+{
+    max-height: 100px;
+    max-width: 280px;
+    font-weight: bold;
 }
 
 

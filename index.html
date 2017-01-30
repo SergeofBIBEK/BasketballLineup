@@ -36,7 +36,7 @@
     <div class="theContainer" id="theContainer" style="height:780px;display: none">
         <input type="image" src="backToCoachButton.png" id="backToCoachButton" onclick="backtoCoach()" />
 
-        <img src="goal.png" style="position: absolute;left: 727px;transform: scale(1.2);top: 20px;" />
+        <img src="goal.png" style="position: absolute;left: 545px;transform: scale(-0.6, 0.6);top: -58px;" />
 
         <p id="mainHeader">Lineup</p>
         <p id="assignmentsList">Assignments</p>
@@ -71,19 +71,19 @@
         <div id="newPlayerDiv" style="display: none">
 
             <label for="newPlayerName">New Player Name:</label>
-            <input type="text" id="newPlayerName" style="background-color: rgba(255, 255,255, 0.3);border: 4px double black;" />
-            <input type="button" id="newPlayerSubmit" style="height: 30px;background-color: rgba(255, 255, 255, 0.3);" value="Save" onclick="saveNewPlayer()" />
+            <input type="text" id="newPlayerName" style="background-color: rgba(255, 255,255, 0.3);border: 4px double black;height:30px;width:200px;" />
+            <input type="image" id="newPlayerSubmit" style="height: 30px;position: absolute;top: 0px;left: 340px;" src="saveButton.png" onclick="saveNewPlayer()" />
 
         </div>
         <div id="removePlayerDiv" style="display: none">
 
             <label for="removePlayerName">Player to Remove:</label>
-            <select id="removePlayerName" style="height: 30px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;" />
-            <input type="button" id="removePlayerSubmit" value="Remove" style="height: 30px;background-color: rgba(255, 255, 255, 0.3);" onclick="removePlayer()" />
+            <select id="removePlayerName" style="height: 30px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;width:200px;margin-right:5px;" />
+            <input type="image" id="removePlayerSubmit" src="removeButton.png" style="height: 30px;height: 30px;position: absolute;top: 0px;left: 340px;" onclick="removePlayer()" />
 
         </div>
 
-        <div id="dynamicHeight" style="position:absolute;top: 360px;width: 100%;height: 100%;margin:0px;">
+        <div id="dynamicHeight" style="position:absolute;top: 360px;width: 100%;margin:0px;">
         <p style="position: absolute;top: 10px;left: 30px;font-size: 25px;">Lineup by Play Period:</p>
         <div class="playingTable" id="playingTable">
             <div id="titleRow" class="titleRow">
@@ -223,7 +223,7 @@
         <p style="position: absolute;top: 180px;left: 120px;font-size: 30px;">Choose a Lineup:</p>
         <select id="lineupSelector" style="position: absolute;top: 218px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;width: 240px;"></select>
         <input type="image" class="submitButton" src="submitButton.png" onclick="navToLineup()" style="position: absolute;top: 220px;left: 370px;" />
-        <input type="button" value="Delete" class="topButtons" onclick="deleteLineup()" style="position: absolute;top: 220px;left: 490px;height: 35px;background-color: rgba(255, 255, 255, 0.3);" />
+        <input type="image" src="deleteButton.png" onclick="deleteLineup()" style="position: absolute;top: 256px;left: 376px;height: 32px;" />
 
         <p style="position: absolute;top: 325px;left: 120px;font-size: 30px;">New Lineup:</p>
         <label for="newLineupInput" style="position: absolute;top: 370px;left: 120px;font-size: 18px;">New Lineup Name/ID:</label>
@@ -253,10 +253,11 @@
     </div>
 
     <div id="reorderDiv" style="display:none">
+        <div style="margin-left:30px;">
         <p style="font-size:30px;">Reorder Players</p>
-        <div id="reorderContainer" style="transform: scale(1.5);padding: 50px"></div>
-        <br />
-        <input type="button" value="Save" class="topButtons" style="background-color:green;" onclick="saveReorder()" />
+        <div id="reorderContainer"></div>
+        <input type="image" src="saveButton.png" style="position:relative;top:5px;left:100px;" onclick="saveReorder()" />
+        </div>
     </div>
 
     <div id="supportButton" style="top: 875px;">
@@ -432,7 +433,7 @@
                         {
                             if (player != "playPeriods")
                                 {
-                                    document.getElementById("player" + dataJSON[player].Skill + "Cell0").innerHTML = "<p>" + player + "</p>";
+                                    document.getElementById("player" + dataJSON[player].Skill + "Cell0").innerHTML = "<p class=\"playerNameP\">" + player + "</p>";
                                     for (var j = 1; j < 6; j++)
                                         {
                                             var newCheckbox = document.createElement("input");
@@ -605,6 +606,8 @@
                                 {
                                     var newP = document.createElement("p");
                                     newP.innerHTML = benchArrays[j][k].Name;
+                                    newP.className = "playerNameP";
+                                    newP.style.overflow = "hidden";
                                     document.getElementById("benchCell" + j).appendChild(newP);
                                 }
                         }
@@ -666,14 +669,14 @@
                     document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "white";
                     if (columnNum != 5 && columnNum != 11)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "#d5e3ec")
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor != "white" && document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor != "black")
                                 {
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "white";
                                 }
                         }
                     if (columnNum == 5)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "#d5e3ec")
+                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor != "white" && document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor != "white")
                                 {
                                     document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white";
                                 }
@@ -767,7 +770,7 @@
                                 {
                                     if (k < 5)
                                         {
-                                            document.getElementById("playingCell" + eval(k + 1) + "x" + j).innerHTML = playingArrays[j][k].Name;
+                                            document.getElementById("playingCell" + eval(k + 1) + "x" + j).innerHTML = "<p class=\"playerNameP\">" + playingArrays[j][k].Name + "</p>";
                                         }
                                 }
                         }
@@ -1039,36 +1042,56 @@
                               return a.Skill - b.Skill;
                             });
             reorderArray = [];
-            var newADiv = document.createElement("div");
-            newADiv.id = "ADiv";
-            document.getElementById("reorderContainer").appendChild(newADiv);
-            var newBDiv = document.createElement("div");
-            newBDiv.id = "BDiv";
-            document.getElementById("reorderContainer").appendChild(newBDiv);
+
             for (var i = 0; i < tempArray.length; i++)
                 {
+                    var newRow = document.createElement("div");
+                    newRow.className = "reorderRow";
+                    newRow.id = "reorderRow" + i;
+                    document.getElementById("reorderContainer").appendChild(newRow);
+
+                    var newA = document.createElement("div");
+                    newA.id = "ADiv" + i;
+                    newA.className = "reorderCell";
+                    document.getElementById("reorderRow" + i).appendChild(newA);
+
+                    var newB = document.createElement("div");
+                    newB.id = "BDiv" + i;
+                    newB.className = "reorderCell";
+                    document.getElementById("reorderRow" + i).appendChild(newB);
+
                     reorderArray.push(tempArray[i].Name);
                      var newP = document.createElement("p");
-                    newP.style.display = "inline";
-                    newP.style.margin = "10px";
+                    newP.className = "playerNameP";
                     newP.innerHTML = tempArray[i].Name;
-                    document.getElementById("ADiv").appendChild(newP);
+                    newP.style.position = "relative";
+                    newP.style.top = "-4px";
+                    newP.style.left = "5px";
+                    document.getElementById("ADiv" + i).appendChild(newP);
+
                     var newUp = document.createElement("input");
-                    newUp.type = "button";
-                    newUp.value = String.fromCharCode(8593);
+                    newUp.type = "image";
+                    newUp.src = "upButton.png"
                     newUp.id = tempArray[i].Name + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("BDiv").appendChild(newUp);
+                    newUp.style.position = "relative";
+                    newUp.style.top = "2px";
+                    newUp.style.left = "5px";
+                    document.getElementById("BDiv" + i).appendChild(newUp);
+
                     var newDown = document.createElement("input");
-                    newDown.type = "button";
-                    newDown.value = String.fromCharCode(8595);
+                    newDown.type = "image";
+                    newDown.src = "downButton.png"
                     newDown.id = tempArray[i].Name + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("BDiv").appendChild(newDown);
-                    document.getElementById("ADiv").appendChild(document.createElement("br"));
-                    document.getElementById("BDiv").appendChild(document.createElement("br"));
+                    newDown.style.position = "relative";
+                    newDown.style.top = "2px";
+                    newDown.style.left = "10px";
+                    document.getElementById("BDiv" + i).appendChild(newDown);
+
                 }
         }
+
         function movePlayer(e)
         {
             var playerToMove = e.id.split("Up")[0].split("Down")[0];
@@ -1094,33 +1117,51 @@
                 {
                     document.getElementById("reorderContainer").removeChild(document.getElementById("reorderContainer").lastChild);
                 }
-            var newADiv = document.createElement("div");
-            newADiv.id = "ADiv";
-            document.getElementById("reorderContainer").appendChild(newADiv);
-            var newBDiv = document.createElement("div");
-            newBDiv.id = "BDiv";
-            document.getElementById("reorderContainer").appendChild(newBDiv);
+
             for (var i = 0; i < reorderArray.length; i++)
                 {
+                    var newRow = document.createElement("div");
+                    newRow.className = "reorderRow";
+                    newRow.id = "reorderRow" + i;
+                    document.getElementById("reorderContainer").appendChild(newRow);
+
+                    var newA = document.createElement("div");
+                    newA.id = "ADiv" + i;
+                    newA.className = "reorderCell";
+                    document.getElementById("reorderRow" + i).appendChild(newA);
+
+                    var newB = document.createElement("div");
+                    newB.id = "BDiv" + i;
+                    newB.className = "reorderCell";
+                    document.getElementById("reorderRow" + i).appendChild(newB);
+
                      var newP = document.createElement("p");
-                    newP.style.display = "inline";
-                    newP.style.margin = "10px";
+                    newP.className = "playerNameP";
                     newP.innerHTML = reorderArray[i];
-                    document.getElementById("ADiv").appendChild(newP);
+                    newP.style.position = "relative";
+                    newP.style.top = "-4px";
+                    newP.style.left = "5px";
+                    document.getElementById("ADiv" + i).appendChild(newP);
+
                     var newUp = document.createElement("input");
-                    newUp.type = "button";
-                    newUp.value = String.fromCharCode(8593);
+                    newUp.type = "image";
+                    newUp.src = "upButton.png"
                     newUp.id = reorderArray[i] + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("BDiv").appendChild(newUp);
+                    newUp.style.position = "relative";
+                    newUp.style.top = "2px";
+                    newUp.style.left = "5px";
+                    document.getElementById("BDiv" + i).appendChild(newUp);
+
                     var newDown = document.createElement("input");
-                    newDown.type = "button";
-                    newDown.value = String.fromCharCode(8595);
+                    newDown.type = "image";
+                    newDown.src = "downButton.png"
                     newDown.id = reorderArray[i] + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
-                    document.getElementById("BDiv").appendChild(newDown);
-                    document.getElementById("ADiv").appendChild(document.createElement("br"));
-                    document.getElementById("BDiv").appendChild(document.createElement("br"));
+                    newDown.style.position = "relative";
+                    newDown.style.top = "2px";
+                    newDown.style.left = "10px";
+                    document.getElementById("BDiv" + i).appendChild(newDown);
                 }
         }
         function saveReorder()
