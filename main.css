@@ -300,6 +300,17 @@ input[type="image"]:active
         top: 60px;
         left: 30px;
         font-size: 50px;
+        max-width: 640px;
+        max-height: 60px;
+        overflow: hidden;
+        word-break: break-all;
+    }
+
+#mainHeader:hover
+    {
+        max-height: 180px;
+        z-index: 3;
+        background-color: #d8cfb9;
     }
 
 #assignmentsList
