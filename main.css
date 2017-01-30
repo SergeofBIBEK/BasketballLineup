@@ -146,6 +146,7 @@ p
         border: inherit;
         display: table-cell;
         text-align: center;
+        height: 19px;
     }
 .totalCell
     {
