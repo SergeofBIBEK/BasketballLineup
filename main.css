@@ -5,9 +5,15 @@
         src: url(DirtyHeadline.ttf);
     }
 
+@font-face
+    {
+        font-family: MyArial;
+        src: url(MyArial.ttf);
+    }
+
 body
     {
-        font-family: sans-serif;
+        font-family: MyArial;
         background-color: black;
     }
 #everythingDiv
