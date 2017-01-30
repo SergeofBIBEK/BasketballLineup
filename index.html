@@ -36,7 +36,7 @@
     <div class="theContainer" id="theContainer" style="height:780px;display: none">
         <input type="image" src="backToCoachButton.png" id="backToCoachButton" onclick="backtoCoach()" />
 
-        <img src="goal.png" style="position: absolute;left: 545px;transform: scale(-0.6, 0.6);top: -58px;" />
+        <img src="goal.png" style="position: absolute;left: 545px;-webkit-transform: scale(-0.6, 0.6);transform: scale(-0.6, 0.6);top: -58px;" />
 
         <p id="mainHeader">Lineup</p>
         <p id="assignmentsList">Assignments</p>
@@ -223,7 +223,7 @@
         <p style="position: absolute;top: 180px;left: 120px;font-size: 30px;">Choose a Lineup:</p>
         <select id="lineupSelector" style="position: absolute;top: 218px;left: 120px;height: 35px;font-size: 15px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;width: 240px;"></select>
         <input type="image" class="submitButton" src="submitButton.png" onclick="navToLineup()" style="position: absolute;top: 220px;left: 370px;" />
-        <input type="image" src="deleteButton.png" onclick="deleteLineup()" style="position: absolute;top: 256px;left: 376px;height: 32px;" />
+        <input type="image" src="deleteButton.png" onclick="deleteLineup()" style="position: absolute;top: 256px;left: 370px;" />
 
         <p style="position: absolute;top: 325px;left: 120px;font-size: 30px;">New Lineup:</p>
         <label for="newLineupInput" style="position: absolute;top: 370px;left: 120px;font-size: 18px;">New Lineup Name/ID:</label>
@@ -256,7 +256,7 @@
         <div style="margin-left:30px;">
         <p style="font-size:30px;">Reorder Players</p>
         <div id="reorderContainer"></div>
-        <input type="image" src="saveButton.png" style="position:relative;top:5px;left:100px;" onclick="saveReorder()" />
+        <input type="image" src="saveButton.png" style="position:relative;top:5px;left:50px;" onclick="saveReorder()" />
         </div>
     </div>
 
@@ -1075,7 +1075,7 @@
                     newUp.id = tempArray[i].Name + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
                     newUp.style.position = "relative";
-                    newUp.style.top = "2px";
+                    newUp.style.top = "1px";
                     newUp.style.left = "5px";
                     document.getElementById("BDiv" + i).appendChild(newUp);
 
@@ -1085,7 +1085,7 @@
                     newDown.id = tempArray[i].Name + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
                     newDown.style.position = "relative";
-                    newDown.style.top = "2px";
+                    newDown.style.top = "1px";
                     newDown.style.left = "10px";
                     document.getElementById("BDiv" + i).appendChild(newDown);
 
@@ -1149,7 +1149,7 @@
                     newUp.id = reorderArray[i] + "Up";
                     newUp.setAttribute("onclick", "movePlayer(this)");
                     newUp.style.position = "relative";
-                    newUp.style.top = "2px";
+                    newUp.style.top = "1px";
                     newUp.style.left = "5px";
                     document.getElementById("BDiv" + i).appendChild(newUp);
 
@@ -1159,7 +1159,7 @@
                     newDown.id = reorderArray[i] + "Down";
                     newDown.setAttribute("onclick", "movePlayer(this)");
                     newDown.style.position = "relative";
-                    newDown.style.top = "2px";
+                    newDown.style.top = "1px";
                     newDown.style.left = "10px";
                     document.getElementById("BDiv" + i).appendChild(newDown);
                 }
