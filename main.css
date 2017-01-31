@@ -86,7 +86,7 @@ p
         border: 1px solid black;
         display: table-row;
         background-image: url(titleRowBackground.png);
-        background-repeat: round;
+        background-size: cover;
         font-weight: bold;
     }
 .playerRow
