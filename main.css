@@ -437,6 +437,7 @@ input[type="image"]:active
             background-color: white;
             color: black;
             font-family: sans-serif;
+            width: 500px;
         }
 
     #titleText, #subtitleText
@@ -463,5 +464,10 @@ input[type="image"]:active
     [halftime="true"]
         {
             background-color: white;
+        }
+    #everythingDiv
+        {
+            width: 0px;
+            margin:0px;
         }
 }
