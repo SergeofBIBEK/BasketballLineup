@@ -983,6 +983,10 @@
                                                                 {
                                                                     window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;
                                                                 }
+                                                            else if (thisNum == 2)
+                                                                {
+                                                                    window.location.search = "?CoachID=" + CoachID;
+                                                                }
                                                 });
                         }
                 }
@@ -1058,9 +1062,12 @@
         {
             if (confirm("Do you wish to save your current assignments first?"))
                 {
-                    saveLineup(1);
+                    saveLineup(2);
                 }
-            window.location.search = "?CoachID=" + CoachID;
+            else
+                {
+                    window.location.search = "?CoachID=" + CoachID;
+                }
         }
         function deleteLineup()
         {
