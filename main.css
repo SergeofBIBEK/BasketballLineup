@@ -1,8 +1,11 @@
 
 @font-face
     {
-        font-family: DirtyHeadline;
-        src: url(DirtyHeadline.ttf);
+        font-family: 'DirtyHeadline';
+        src: url(DirtyHeadline.ttf),url('dirtyheadline.woff2') format('woff2'),
+         url('dirtyheadline.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
     }
 
 body
@@ -26,7 +29,7 @@ body
 #titleText
     {
         font-size: 70px;
-        font-family: DirtyHeadline;
+        font-family: 'DirtyHeadline';
         color: #d9c3a8;
         z-index: 10;
         position: relative;
@@ -36,7 +39,7 @@ body
 #subtitleText
     {
         font-size: 70px;
-        font-family: DirtyHeadline;
+        font-family: 'DirtyHeadline';
         color: #fbfaf8;
         z-index: 10;
         position: relative;
