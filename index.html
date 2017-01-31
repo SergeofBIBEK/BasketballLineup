@@ -273,7 +273,6 @@
     </div>
     <script>
         //firebase vars
-        var database = firebase.database();
         var CoachID = "";
         var currentLineup = "";
         var haveCoach = false;
@@ -826,9 +825,26 @@
             var newPlayPeriods = document.getElementById("playPeriodsInput").value.split("/").join("").split(" ").join("");
             if (newLineup != "" && newPlayPeriods != "")
                 {
+                    try
+                        {
                     firebase.database().ref(newCoach + "/" + newLineup).update({
                         "playPeriods": newPlayPeriods,
-                    }, function(){window.location.search = "?CoachID=" + newCoach + "&LineupID=" + newLineup;});
+                    }, function(error){
+
+                        if (error)
+                            {
+                                alert("An error occurred saving your data.");
+                            }
+                        else
+                            {
+                                window.location.search = "?CoachID=" + newCoach + "&LineupID=" + newLineup;
+                            }
+                                        });
+                        }
+                    catch(e)
+                        {
+                            alert("An error occurred saving your data. Check that CoachID or LineupID don't contain invalid characters such as \".\", \"#\", \"$\", \"[\", or \"]\"");
+                        }
                 }
             else
                 {
@@ -841,9 +857,28 @@
             var newPlayPeriods = document.getElementById("newLineupInput2").value.split("/").join("").split(" ").join("");
             if (newLineup != "" && newPlayPeriods != "")
                 {
+                    try
+                    {
+
                     firebase.database().ref(CoachID + "/" + newLineup).update({
                         "playPeriods": newPlayPeriods,
-                    },function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + newLineup;});
+                    },function(error){
+
+                        if (error)
+                            {
+                                alert("An error occurred saving your data.");
+                            }
+                        else
+                            {
+                                window.location.search = "?CoachID=" + CoachID + "&LineupID=" + newLineup;
+                            }
+
+                            });
+                    }
+                    catch(e)
+                        {
+                            alert("An error occurred saving your data. Check that the LineupID doesn't contain invalid characters such as \".\", \"#\", \"$\", \"[\", or \"]\"");
+                        }
                 }
             else
                 {
@@ -877,11 +912,29 @@
                 }
             else
                 {
+                    try
+                        {
                     firebase.database().ref(CoachID + "/" + currentLineup + "/" + newPlayer).update({
                         "Name": newPlayer,
                         "Skill": newCount,
                         "Checkboxes": "0,0,0,0,0,0,0,0,0,0,0,0,0",
-                    },function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;});
+                    },function(error){
+
+                        if (error)
+                            {
+                                alert("An error occurred saving your data.");
+                            }
+                        else
+                            {
+                                window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;
+                            }
+
+                    });
+                        }
+                    catch(e)
+                        {
+                            alert("An error occurred saving your data. Check that the player name doesn't contain invalid characters such as \".\", \"#\", \"$\", \"[\", or \"]\"");
+                        }
                 }
             //save the new player
         }
@@ -937,24 +990,47 @@
                                     console.log(numLoops + ":" + (Object.keys(dataJSON).length - 1));
                                     if (numLoops == (Object.keys(dataJSON).length - 1 ))
                                             {
+                                                try
+                                                    {
                                                 firebase.database().ref(CoachID + "/" + copyToLineup + "/" + player).update({
                                                     "Checkboxes": dataJSON[player].Checkboxes,
                                                     "Skill": dataJSON[player].Skill,
                                                     "Name": dataJSON[player].Name,
-                                                },function(){
-                                                            if (confirm("Copied successfully to: " + copyToLineup + " Click OK to go there, Cancel to stay on this Lineup"))
+                                                },function(error){
+
+                                                            if (error)
                                                                 {
-                                                                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + copyToLineup;
+                                                                    alert("An error occurred saving your data.");
+                                                                }
+                                                            else
+                                                                {
+
+                                                                    if (confirm("Copied successfully to: " + copyToLineup + " Click OK to go there, Cancel to stay on this Lineup"))
+                                                                        {
+                                                                            window.location.search = "?CoachID=" + CoachID + "&LineupID=" + copyToLineup;
+                                                                        }
                                                                 }
                                                 });
+                                                    }
+                                                catch(e)
+                                                    {
+                                                        alert("An error occurred saving your data. Check that the LineupID doesn't contain invalid characters such as \".\", \"#\", \"$\", \"[\", or \"]\"");
+                                                    }
                                             }
                                     else
                                         {
+                                            try
+                                                {
                                             firebase.database().ref(CoachID + "/" + copyToLineup + "/" + player).update({
                                                 "Checkboxes": dataJSON[player].Checkboxes,
                                                 "Skill": dataJSON[player].Skill,
                                                 "Name": dataJSON[player].Name,
                                             });
+                                                }
+                                            catch(e)
+                                                {
+                                                    alert("An error occurred saving your data. Check that the LineupID doesn't contain invalid characters such as \".\", \"#\", \"$\", \"[\", or \"]\"");
+                                                }
                                         }
                                 }
                             numLoops++;
