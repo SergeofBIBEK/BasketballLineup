@@ -379,12 +379,6 @@ input[type="image"]:active
     text-align: center;
 }
 
-[halftime="true"]
-{
-    background-color: #5d5e5f;
-    color: black;
-}
-
 .titleCell
 {
     max-width: 50px;
@@ -425,6 +419,32 @@ input[type="image"]:active
     display: inherit;
 }
 
+.playerCell[picked="false"]
+{
+    background-color: #d0d0d0;
+}
+
+.playerCell[playedAlready="true"]
+{
+    background-color: #d5e3ec;
+}
+
+.playerCell[picked="true"]
+{
+    background-color: #757575;
+}
+
+[halftime="true"]
+{
+    background-color: #5d5e5f;
+    color: black;
+}
+
+.playerCell[halftime="true"]
+{
+    background-color: #5d5e5f;
+    color: black;
+}
 
 @media print
 {

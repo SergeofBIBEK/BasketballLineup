@@ -402,6 +402,7 @@
                                     var newCell = document.createElement("div");
                                     newCell.id = "player" + i + "Cell" + j;
                                     newCell.className = "playerCell";
+                                    newCell.setAttribute("picked","false");
                                     if (j == 6)
                                         {
                                             newCell.setAttribute("halftime", "true");
@@ -661,20 +662,14 @@
             var columnTotal = parseInt(document.getElementById("totalCell" + columnNum).innerHTML);
             if (e.checked == true)
                 {
-                    document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "black";
+                    document.getElementById("player" + playerNum + "Cell" + columnNum).setAttribute("picked", "true");
                     if (columnNum != 5 && columnNum != 11)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor == "")
-                                {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "#d5e3ec";
-                                }
+                        document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).setAttribute("playedAlready","true");
                         }
                     if (columnNum == 5)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white" || document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor == "")
-                                {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "#d5e3ec";
-                                }
+                            document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).setAttribute("playedAlready","true");
                         }
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal + 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal + 1;
@@ -705,20 +700,14 @@
                 }
             if (e.checked == false)
                 {
-                    document.getElementById("player" + playerNum + "Cell" + columnNum).style.backgroundColor = "white";
+                    document.getElementById("player" + playerNum + "Cell" + columnNum).setAttribute("picked", false);
                     if (columnNum != 5 && columnNum != 11)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor != "white" && document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor != "black")
-                                {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).style.backgroundColor = "white";
-                                }
+                            document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 1)).setAttribute("playedAlready", "false");
                         }
                     if (columnNum == 5)
                         {
-                            if (document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor != "white" && document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor != "white")
-                                {
-                                    document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).style.backgroundColor = "white";
-                                }
+                            document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).setAttribute("playedAlready", "false");
                         }
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal - 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal - 1;
@@ -1385,7 +1374,6 @@
         //Feature Requests
         /*
             1. after the 5 for a period is selected, the three who didn't play are highlighted in the next column, so you know that you have to select them.
-            2. if a kid has gone twice in a row, his cell becomes red.
         */
     </script>
 </body>
