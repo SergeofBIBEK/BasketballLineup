@@ -85,6 +85,7 @@
 
         <div id="dynamicHeight" style="position:absolute;top: 370px;width: 100%;">
         <p style="position: absolute;top: 30px;left: 30px;font-size: 25px;">Lineup by Play Period:</p>
+        <input type="image" src="upButton.png" onclick="colorToggle()" style="position:relative;top:60px;left:60px" />
         <div class="playingTable" id="playingTable">
             <div id="titleRow" class="titleRow">
                 <div class="titleCell" hide1st="false"><p>20-16 Minutes</p></div>
@@ -1326,6 +1327,21 @@
         function backToHome()
         {
             window.location.search = "";
+        }
+
+        function colorToggle()
+        {
+            for (var i = 1; i < 6; i++)
+                {
+                    if (document.getElementById("playingRow" + i).className == "playingRow" + i)
+                        {
+                            document.getElementById("playingRow" + i).className = "playingRowClear";
+                        }
+                    else
+                        {
+                            document.getElementById("playingRow" + i).className = "playingRow" + i;
+                        }
+                }
         }
         //Feature Requests
         /*

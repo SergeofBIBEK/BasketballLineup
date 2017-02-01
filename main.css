@@ -137,6 +137,13 @@ p
         display: table-row;
         background-color: white;
     }
+.playingRowClear
+    {
+        border: 1px solid black;
+        display: table-row;
+        background-color: #d8cfb9;
+    }
+
 .titleCell
     {
         border: 1px solid black;
@@ -476,33 +483,23 @@ input[type="image"]:active
 
     .playingRow1
         {
-            border: 1px solid black;
-            display: table-row;
             background-color: black;
             color: white;
         }
     .playingRow2
         {
-            border: 1px solid black;
-            display: table-row;
             background-color: #87CEFA;
         }
     .playingRow3
         {
-            border: 1px solid black;
-            display: table-row;
             background-color: #ff8080;
         }
     .playingRow4
         {
-            border: 1px solid black;
-            display: table-row;
             background-color: #FFB6C1;
         }
     .playingRow5
         {
-            border: 1px solid black;
-            display: table-row;
             background-color: white;
         }
 }
