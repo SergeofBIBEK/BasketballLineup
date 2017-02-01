@@ -117,19 +117,19 @@ p
     {
         border: 1px solid black;
         display: table-row;
-        background-color: #87CEFA;
+        background-color: #b5c7f9;
     }
 .playingRow3
     {
         border: 1px solid black;
         display: table-row;
-        background-color: #ff8080;
+        background-color: #B23838;
     }
 .playingRow4
     {
         border: 1px solid black;
         display: table-row;
-        background-color: #FFB6C1;
+        background-color: #D5BBDE;
     }
 .playingRow5
     {
@@ -472,5 +472,37 @@ input[type="image"]:active
         {
             width: 0px;
             margin:0px;
+        }
+
+    .playingRow1
+        {
+            border: 1px solid black;
+            display: table-row;
+            background-color: black;
+            color: white;
+        }
+    .playingRow2
+        {
+            border: 1px solid black;
+            display: table-row;
+            background-color: #87CEFA;
+        }
+    .playingRow3
+        {
+            border: 1px solid black;
+            display: table-row;
+            background-color: #ff8080;
+        }
+    .playingRow4
+        {
+            border: 1px solid black;
+            display: table-row;
+            background-color: #FFB6C1;
+        }
+    .playingRow5
+        {
+            border: 1px solid black;
+            display: table-row;
+            background-color: white;
         }
 }
