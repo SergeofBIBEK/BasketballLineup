@@ -403,6 +403,28 @@ input[type="image"]:active
     font-weight: bold;
 }
 
+.uncheckedImg
+{
+    display: inherit;
+    margin-top: 3px;
+}
+
+.checkedImg
+{
+    display: none;
+    margin-top: 3px;
+}
+
+.playingCheckbox:checked + label > .uncheckedImg
+{
+    display: none;
+}
+
+.playingCheckbox:checked + label > .checkedImg
+{
+    display: inherit;
+}
+
 
 @media print
 {
@@ -425,6 +447,11 @@ input[type="image"]:active
     img
         {
             display: none;
+        }
+
+    .playingCheckbox
+        {
+            display: inherit !important;
         }
 
     .playerCell
@@ -478,7 +505,7 @@ input[type="image"]:active
     #everythingDiv
         {
             width: 0px;
-            margin:0px;
+            margin: 0px;
         }
 
     .playingRow1

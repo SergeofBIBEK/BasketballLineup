@@ -440,12 +440,32 @@
                                             newCheckbox.type = "checkbox";
                                             newCheckbox.id = "player" + dataJSON[player].Skill + "Cell" + j + "Checkbox";
                                             newCheckbox.className = "playingCheckbox";
+                                            newCheckbox.style.display = "none";
                                             newCheckbox.setAttribute("onclick","checkboxHandler(this)");
                                             if (dataJSON[player].Checkboxes.split(",")[j] == 1)
                                                 {
                                                     newCheckbox.setAttribute("checked", "checked");
                                                 }
                                             document.getElementById("player" + dataJSON[player].Skill + "Cell" + j).appendChild(newCheckbox);
+
+                                            var newLabel = document.createElement("label");
+                                            newLabel.htmlFor = "player" + dataJSON[player].Skill + "Cell" + j + "Checkbox";
+                                            newLabel.id = "player" + dataJSON[player].Skill + "Cell" + j + "CheckboxLabel";
+                                            document.getElementById("player" + dataJSON[player].Skill + "Cell" + j).appendChild(newLabel);
+
+                                            var newImage = document.createElement("img");
+                                            newImage.src = "unchecked.png";
+                                            newImage.style.height = "15px";
+                                            newImage.style.width = "auto";
+                                            newImage.className = "uncheckedImg";
+                                            document.getElementById("player" + dataJSON[player].Skill + "Cell" + j + "CheckboxLabel").appendChild(newImage);
+
+                                            var newImage2 = document.createElement("img");
+                                            newImage2.src = "checked.png";
+                                            newImage2.style.height = "15px";
+                                            newImage2.style.width = "auto";
+                                            newImage2.className = "checkedImg";
+                                            document.getElementById("player" + dataJSON[player].Skill + "Cell" + j + "CheckboxLabel").appendChild(newImage2);
                                         }
                                     document.getElementById("player" + dataJSON[player].Skill + "Cell6").innerHTML = "<p>|</p>";
                                     for (var j = 7; j < 12; j++)
@@ -454,12 +474,32 @@
                                             newCheckbox.type = "checkbox";
                                             newCheckbox.id = "player" + dataJSON[player].Skill + "Cell" + j + "Checkbox";
                                             newCheckbox.className = "playingCheckbox";
+                                            newCheckbox.style.display = "none";
                                             newCheckbox.setAttribute("onclick","checkboxHandler(this)");
                                             if (dataJSON[player].Checkboxes.split(",")[j] == 1)
                                                 {
                                                     newCheckbox.setAttribute("checked", "checked");
                                                 }
                                             document.getElementById("player" + dataJSON[player].Skill + "Cell" + j).appendChild(newCheckbox);
+
+                                            var newLabel = document.createElement("label");
+                                            newLabel.htmlFor = "player" + dataJSON[player].Skill + "Cell" + j + "Checkbox";
+                                            newLabel.id = "player" + dataJSON[player].Skill + "Cell" + j + "CheckboxLabel";
+                                            document.getElementById("player" + dataJSON[player].Skill + "Cell" + j).appendChild(newLabel);
+
+                                            var newImage = document.createElement("img");
+                                            newImage.src = "unchecked.png";
+                                            newImage.style.height = "15px";
+                                            newImage.style.width = "auto";
+                                            newImage.className = "uncheckedImg";
+                                            document.getElementById("player" + dataJSON[player].Skill + "Cell" + j + "CheckboxLabel").appendChild(newImage);
+
+                                             var newImage2 = document.createElement("img");
+                                            newImage2.src = "checked.png";
+                                            newImage2.style.height = "15px";
+                                            newImage2.style.width = "auto";
+                                            newImage2.className = "checkedImg";
+                                            document.getElementById("player" + dataJSON[player].Skill + "Cell" + j + "CheckboxLabel").appendChild(newImage2);
                                         }
                                 }
                         }
