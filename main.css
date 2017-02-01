@@ -393,7 +393,7 @@ input[type="image"]:active
 .playerNameP
 {
     max-height: 16px;
-    max-width: 60px;
+    max-width: 10px;
 }
 
 .playerNameP:hover
