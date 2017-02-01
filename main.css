@@ -244,6 +244,7 @@ input[type="text"]:active
         display: table-cell;
         border: 1px solid black;
         background-color: #d8cfb9;
+        min-width: 80px;
     }
 
 #EnterCoachID, #ChooseLineup, #createLineup
