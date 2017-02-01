@@ -446,7 +446,7 @@ input[type="image"]:active
 
     img
         {
-            display: none;
+            display: none !important;
         }
 
     .playingCheckbox
