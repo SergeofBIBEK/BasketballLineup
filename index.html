@@ -85,7 +85,7 @@
 
         <div id="dynamicHeight" style="position:absolute;top: 370px;width: 100%;">
         <p style="position: absolute;top: 30px;left: 30px;font-size: 25px;">Lineup by Play Period:</p>
-        <input type="image" src="toggleColorsButton.png" onclick="colorToggle()" style="position:relative;top:55px;left:15px;transform: scale(0.7)" />
+        <input type="image" src="toggleColorsButton.png" onclick="colorToggle()" style="position:relative;top:55px;left:15px;-webkit-transform: scale(0.7);transform: scale(0.7);" />
         <div class="playingTable" id="playingTable">
             <div id="titleRow" class="titleRow">
                 <div class="titleCell" hide1st="false"><p>20-16 Minutes</p></div>
@@ -669,7 +669,7 @@
                         }
                     if (columnNum == 5)
                         {
-                            document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).setAttribute("playedAlready","true");
+                            document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + (2 - (dataJSON.playPeriods - 5)))).setAttribute("playedAlready","true");
                         }
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal + 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal + 1;
@@ -707,7 +707,7 @@
                         }
                     if (columnNum == 5)
                         {
-                            document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + 2)).setAttribute("playedAlready", "false");
+                            document.getElementById("player" + playerNum + "Cell" + (parseInt(columnNum) + (2 - (dataJSON.playPeriods - 5)))).setAttribute("playedAlready", "false");
                         }
                     document.getElementById("player" + playerNum + "Cell12").innerHTML = playerTotal - 1;
                     document.getElementById("totalCell" + columnNum).innerHTML = columnTotal - 1;
