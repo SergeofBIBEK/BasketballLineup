@@ -280,16 +280,21 @@
         var haveLineup = false;
         var dataJSON;
         var getDataComplete = false;
+
         //local vars
         var benchArrays = [["none"]];
         var playingArrays = [["none"],[],[],[],[],[],["none"],[],[],[],[],[]];
         var reorderArray = [];
+
         //Completion Variables
         var rowsDone = false;
         var cellsDone = false;
         var totalRowDone = false;
         var benchDone = false;
+        var saveComplete = false;
+
         window.onload = init();
+
         function init()
         {
             checkQueryString();
@@ -976,6 +981,8 @@
             var thisNum = 0;
             thisNum += parseInt(num);
 
+            var thisCount = 0;
+
             for (var player in dataJSON)
                 {
                     if (player != "playPeriods")
@@ -1016,8 +1023,13 @@
                                                                 {
                                                                     window.location.search = "?CoachID=" + CoachID;
                                                                 }
+                                                            else if (thisNum == 3 && thisCount == Object.keys(dataJSON).length)
+                                                                {
+                                                                    removePlayerPart2();
+                                                                }
                                                 });
                         }
+                    thisCount++;
                 }
         }
         function copyLineup()
@@ -1037,7 +1049,6 @@
                         {
                             if (player != "playPeriods")
                                 {
-                                    console.log(numLoops + ":" + (Object.keys(dataJSON).length - 1));
                                     if (numLoops == (Object.keys(dataJSON).length - 1 ))
                                             {
                                                 try
@@ -1124,11 +1135,20 @@
         }
         function removePlayer()
         {
-            var playerToDelete = unescape(document.getElementById("removePlayerName").value);
             if (confirm("Do you wish to save your current assignments first?"))
                 {
-                    saveLineup(1);
+                    saveLineup(3);
                 }
+            else
+                {
+                    removePlayerPart2();
+                }
+        }
+
+        function removePlayerPart2()
+        {
+            var playerToDelete = unescape(document.getElementById("removePlayerName").value);
+
             var decision = confirm("Are you sure you wish to delete " + playerToDelete + "? This action cannot be undone.");
             if (decision)
                 {
