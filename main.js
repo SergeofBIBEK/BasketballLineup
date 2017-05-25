@@ -529,6 +529,7 @@ function setLineupList()
 {
     if (getDataComplete == true)
     {
+        document.getElementById("lineupSelector").innerHTML = "";
         for (var lineup in dataJSON)
         {
             var newOption = document.createElement("option");
@@ -546,38 +547,6 @@ function navToLineup()
 {
     var lineupVar = document.getElementById("lineupSelector").value;
     window.open("/?LineupID=" + lineupVar, "_self");
-}
-function saveNewLineup()
-{
-    var newCoach = unescape(document.getElementById("newCoachID").value).split("/").join("").split(" ").join("");
-    var newLineup = unescape(document.getElementById("newLineupName").value).split("/").join("").split(" ").join("");
-    var newPlayPeriods = document.getElementById("playPeriodsInput").value.split("/").join("").split(" ").join("");
-    if (newLineup != "" && newPlayPeriods != "")
-    {
-        try
-        {
-            firebase.database().ref(newCoach + "/" + newLineup).update({
-                "playPeriods": newPlayPeriods,
-            }, function(error){
-                if (error)
-                {
-                    alert("An error occurred saving your data.");
-                }
-                else
-                {
-                    window.location.search = "?LineupID=" + newLineup;
-                }
-            });
-        }
-        catch(e)
-        {
-            alert("An error occurred saving your data. Check that CoachID or LineupID don't contain invalid characters such as \".\", \"#\", \"$\", \"[\", or \"]\"");
-        }
-    }
-    else
-    {
-        alert("Please Fill In All Fields");
-    }
 }
 function setUpNewLineup()
 {

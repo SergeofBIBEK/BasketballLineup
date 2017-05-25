@@ -492,6 +492,11 @@ input[type="image"]:active
     {
         display: none;
     }
+    
+    #logoutButton
+    {
+        display: none;
+    }
 
     img
     {
