@@ -14,15 +14,30 @@ var rowsDone = false;
 var cellsDone = false;
 var totalRowDone = false;
 var benchDone = false;
-var saveComplete = false;
-window.addEventListener('DOMContentLoaded', init);
+var saveComplete = false; 
+
+function signedInHandler()
+{
+    document.getElementById("firebaseui-auth-container").style.display = "none";
+    
+    CoachID = currentUser.uid;
+    haveCoach = true;
+    init();
+}
+
+function signedOutHandler()
+{
+    haveCoach = false;
+    document.getElementById("logoutButton").style.display = "none";
+    init();
+}
+
 function init()
 {
     checkQueryString();
     if (!haveCoach)
     {
         document.getElementById("EnterCoachID").style.display = "block";
-        getFirebaseData();
     }
     if (haveCoach && !haveLineup)
     {
@@ -56,11 +71,6 @@ function checkQueryString()
             tempArray.push(tempVars[i].split("=")[0]);
             tempArray.push(tempVars[i].split("=")[1]);
         }
-        if (tempArray.indexOf("CoachID") != -1 && tempArray[eval(tempArray.indexOf("CoachID") + 1)] != "")
-        {
-            CoachID = unescape(tempArray[eval(tempArray.indexOf("CoachID") + 1)]);
-            haveCoach = true;
-        }
         if (tempArray.indexOf("LineupID") != -1 && tempArray[eval(tempArray.indexOf("LineupID") + 1)] != "")
         {
             currentLineup = unescape(tempArray[eval(tempArray.indexOf("LineupID") + 1)]);
@@ -70,24 +80,18 @@ function checkQueryString()
 }
 function getFirebaseData()
 {
-    if (!haveCoach)
-    {
-        $.getJSON(config.databaseURL + "/" + ".json", function(e) {
-            dataJSON = e;
-            getDataComplete = true;
-        });
-    }
+
     if (haveCoach && !haveLineup)
     {
-        $.getJSON(config.databaseURL + "/" + CoachID + ".json", function(e) {
-            dataJSON = e;
+        firebase.database().ref(CoachID).once('value', function(coachLineups){
+            dataJSON = coachLineups.val();
             getDataComplete = true;
         });
     }
     if (haveCoach && haveLineup)
     {
-        $.getJSON(config.databaseURL + "/" + CoachID + "/" + currentLineup + ".json", function(e) {
-            dataJSON = e;
+        firebase.database().ref(CoachID + "/" + currentLineup).once('value', function(lineupData){
+            dataJSON = lineupData.val();
             getDataComplete = true;
         });
     }
@@ -540,29 +544,8 @@ function setLineupList()
 }
 function navToLineup()
 {
-    document.getElementById("coachInput").value = CoachID;
-    document.getElementById("lineupInput").value = document.getElementById("lineupSelector").value;
-    document.getElementById("coachSubmit").click();
-}
-function setUpNewCoach()
-{
-    var alreadyTaken = false;
-    for (var coach in dataJSON)
-    {
-        if (coach == document.getElementById("newCoachID").value)
-        {
-            alreadyTaken = true;
-        }
-    }
-    if (alreadyTaken || document.getElementById("newCoachID").value == "")
-    {
-        alert("Invalid CoachID");
-    }
-    else
-    {
-        document.getElementById("EnterCoachID").style.display = "none";
-        document.getElementById("createLineup").style.display = "block";
-    }
+    var lineupVar = document.getElementById("lineupSelector").value;
+    window.open("/?LineupID=" + lineupVar, "_self");
 }
 function saveNewLineup()
 {
@@ -582,7 +565,7 @@ function saveNewLineup()
                 }
                 else
                 {
-                    window.location.search = "?CoachID=" + newCoach + "&LineupID=" + newLineup;
+                    window.location.search = "?LineupID=" + newLineup;
                 }
             });
         }
@@ -613,7 +596,7 @@ function setUpNewLineup()
                 }
                 else
                 {
-                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + newLineup;
+                    window.location.search = "?LineupID=" + newLineup;
                 }
             });
         }
@@ -667,7 +650,7 @@ function saveNewPlayer()
                 }
                 else
                 {
-                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;
+                    window.location.search = "?LineupID=" + currentLineup;
                 }
             });
         }
@@ -720,11 +703,11 @@ function saveLineup(num)
                 }
                 else if (thisNum == 0)
                 {
-                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;
+                    window.location.search = "?LineupID=" + currentLineup;
                 }
                 else if (thisNum == 2)
                 {
-                    window.location.search = "?CoachID=" + CoachID;
+                    window.location.search = "";
                 }
                 else if (thisNum == 3 && thisCount == Object.keys(dataJSON).length)
                 {
@@ -769,7 +752,7 @@ function copyLineup()
                             {
                                 if (confirm("Copied successfully to: " + copyToLineup + " Click OK to go there, Cancel to stay on this Lineup"))
                                 {
-                                    window.location.search = "?CoachID=" + CoachID + "&LineupID=" + copyToLineup;
+                                    window.location.search = "?LineupID=" + copyToLineup;
                                 }
                             }
                         });
@@ -807,7 +790,7 @@ function backtoCoach()
     }
     else
     {
-        window.location.search = "?CoachID=" + CoachID;
+        window.open("", "_self");
     }
 }
 function deleteLineup()
@@ -815,7 +798,7 @@ function deleteLineup()
     var lineupToDelete = unescape(document.getElementById("lineupSelector").value);
     if (confirm("Are you sure you wish to delete " + lineupToDelete + "? This action cannot be undone."))
     {
-        firebase.database().ref(CoachID + "/" + lineupToDelete).remove(function(){window.location.search = "?CoachID=" + CoachID;});
+        firebase.database().ref(CoachID + "/" + lineupToDelete).remove(function(){window.location.search = "";});
     }
 }
 function deletePlayer()
@@ -878,7 +861,7 @@ function removePlayerPart2()
     }
     if (decision && playerToDelete != "playPeriods" && playerToDelete != "")
     {
-        firebase.database().ref(CoachID + "/" + currentLineup + "/" + playerToDelete).remove(function(){window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup});
+        firebase.database().ref(CoachID + "/" + currentLineup + "/" + playerToDelete).remove(function(){window.location.search = "?LineupID=" + currentLineup});
     }
 }
 function reorderPlayer()
@@ -1016,7 +999,7 @@ function saveReorder()
         firebase.database().ref(CoachID + "/" + currentLineup + "/" + reorderArray[i]).update({
             "Skill": i,
         }, function(){
-            window.location.search = "?CoachID=" + CoachID + "&LineupID=" + currentLineup;
+            window.location.search = "?LineupID=" + currentLineup;
         });
     }
 }

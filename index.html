@@ -24,7 +24,9 @@
         <!--Begin Firebase Code-->
         <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
         <script src="fbdbref.js"></script>
-        <!--<script type="text/javascript" src="fbli.js"></script>-->
+        <script src="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.css" />
+        <script type="text/javascript" src="fbli.js"></script>
         <!--End Firebase Code-->
         
         
@@ -204,23 +206,9 @@
             </div>
 
             <div id="EnterCoachID" style="display: none">
-                <p style="position: absolute;top: 180px;left: 115px;font-size: 30px;">Enter Your Secret Coach ID</p>
-                <p style="position: absolute;top: 233px;left: 120px;font-size: 20px;">Optional: Enter your LineupID</p>
-                <form method="get">
-                    <label for="coachInput" id="coachInputLabel" style="position: absolute;top: 295px;left: 120px;font-size: 22px;">CoachID:</label>
-                    <input type="text" name="CoachID" id="coachInput" style="position: absolute;top: 325px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;" />
-
-                    <label for="lineupInput" id="lineupInputLabel" style="position: absolute;top: 367px;left: 120px;font-size: 22px;">LineupID:</label>
-                    <input type="text" name="LineupID" id="lineupInput" style="position: absolute;top: 396px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;" />
-
-                    <input type="image" class="submitButton" src="submitButton.png" id="coachSubmit" style="position: absolute;top: 398px;left: 400px;" />
-                </form>
-
-                <p style="position: absolute;top: 510px;left: 120px;height: 30px;font-size: 20px;">New? Set up a new CoachID</p>
-                <label for="newCoachID" style="position: absolute;top: 543px;left: 120px;font-size: 22px;">New CoachID</label>
-                <input type="text" id="newCoachID" style="position: absolute;top: 572px;left: 120px;height: 35px;width: 240px;background-color: rgba(255, 255, 255, 0.3);border: 4px double black;font-size: 18px;" />
-                <input type="image" class="submitButton" src="submitButton.png" onclick="setUpNewCoach()" style="position: absolute;top: 575px;left: 400px;" />
-                <p style="position: absolute;top: 619px;left: 120px;font-size: 21px;color: #ad0505;width: 365px;">Note: Make CoachID hard to guess and do not share it with other coaches.</p>
+                <p style="position: absolute;top: 180px;left: 115px;font-size: 30px;">Welcome to Line 'em Up!</p>
+                
+                <div id="firebaseui-auth-container"></div>
 
             </div>
 
@@ -264,7 +252,9 @@
                     <input type="image" src="saveButton.png" style="position:relative;top:5px;left:50px;" onclick="saveReorder()" />
                 </div>
             </div>
-
+            
+            <input value="Sign Out" id="logoutButton" type="button" onclick="firebase.auth().signOut().then(function(){location.reload();});">
+            
             <div id="supportButton" style="top: 875px;">
                 <p>Support the Developer?</p>
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">

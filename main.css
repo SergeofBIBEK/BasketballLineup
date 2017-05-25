@@ -10,14 +10,31 @@
 
 #firebaseui-auth-container 
 {
-    position: absolute;
+    position: relative;
     z-index: 10;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 220px;
+    left: -160px;
+}
+
+#logoutButton
+{
+    position: relative;
+    left: calc(100% - 100px);
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 4px double black;
+    outline: none;
+}
+
+#logoutButton:hover
+{
+    outline: 4px double #de5c18;
+}
+
+#logoutButton:active
+{
+    outline: 2px solid #de5c18;
+    transform: scale(0.9);
 }
 
 body
