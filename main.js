@@ -790,7 +790,7 @@ function backtoCoach()
     }
     else
     {
-        window.open("", "_self");
+        location.search = "";
     }
 }
 function deleteLineup()
