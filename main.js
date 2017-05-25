@@ -19,7 +19,7 @@ var saveComplete = false;
 function signedInHandler()
 {
     document.getElementById("firebaseui-auth-container").style.display = "none";
-    
+
     CoachID = currentUser.uid;
     haveCoach = true;
     init();
@@ -58,6 +58,7 @@ function init()
         fillTotals();
         setUpBench();
         setNumPeriods();
+        fillStatTable();
     }
 }
 function checkQueryString()
@@ -1023,6 +1024,58 @@ function colorToggle()
         }
     }
 }
+
+function fillStatTable()
+{
+    var tableContainer = document.getElementById("statSheet");
+    var statSheetHTML = "";
+    
+    //start table
+    statSheetHTML += "<div class='statsTable'>";
+
+    //first row
+    statSheetHTML += "<div class='titleRow'>";
+    
+    //make cells
+    statSheetHTML += "<div class='titleCell'>Num</div>";
+    statSheetHTML += "<div class='titleCell'>Player</div>";
+    statSheetHTML += "<div class='titleCell'>Points</div>";
+    statSheetHTML += "<div class='titleCell'>Rebounds</div>";
+    statSheetHTML += "<div class='titleCell'>Assists</div>";
+    statSheetHTML += "<div class='titleCell'>Steals</div>";
+    statSheetHTML += "<div class='titleCell'>Blocks</div>";
+    
+    statSheetHTML += "</div>";
+    //end first row
+    
+    firebase.database().ref(CoachID + "/" + currentLineup).orderByChild("Skill").on('value', function(lineup){
+        lineup.forEach(function(player){
+            if (player.key != "playPeriods")
+            {
+                //make row
+                statSheetHTML += "<div class='row'>";
+                
+                //make cells
+
+                statSheetHTML += "<div class='cell'></div>";
+                statSheetHTML += "<div class='cell'>" + player.key + "</div>";
+                statSheetHTML += "<div class='cell'></div>";
+                statSheetHTML += "<div class='cell'></div>";
+                statSheetHTML += "<div class='cell'></div>";
+                statSheetHTML += "<div class='cell'></div>";
+                statSheetHTML += "<div class='cell'></div>";
+                
+                //end row
+                statSheetHTML += "</div>";
+            }
+        });
+        //end table
+        statSheetHTML += "</div>";
+        tableContainer.innerHTML = statSheetHTML;
+    });
+
+}
+
 //Feature Requests
 /*
             1. after the 5 for a period is selected, the three who didn't play are highlighted in the next column, so you know that you have to select them.

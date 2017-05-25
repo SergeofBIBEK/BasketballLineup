@@ -110,6 +110,22 @@ p
 {
     z-index: 3;
 }
+
+.statsTable
+{
+    width: 760px;
+    border: 1px solid black;
+    display: table;
+    position: absolute;
+    top: 400px;
+    left: 110px;
+    display: none;
+}
+.statsTable:hover, .playingTable:hover, .firstTable:hover
+{
+    z-index: 3;
+}
+
 .titleRow
 {
     border: 1px solid black;
@@ -118,7 +134,7 @@ p
     background-size: cover;
     font-weight: bold;
 }
-.playerRow
+.playerRow, .row
 {
     border: 1px solid black;
     display: table-row;
@@ -181,7 +197,7 @@ p
     padding: 1px 2px;
 }
 
-.playerCell
+.playerCell, .cell
 {
     border: inherit;
     display: table-cell;
@@ -508,7 +524,7 @@ input[type="image"]:active
         display: inherit !important;
     }
 
-    .playerCell
+    .playerCell, .cell
     {
         background-color: white !important;
     }
@@ -586,5 +602,10 @@ input[type="image"]:active
     .playingRowClear
     {
         background-color: white;
+    }
+    
+    .statsTable
+    {
+        display: table;
     }
 }
