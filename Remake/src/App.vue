@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div id="EverythingDiv">
+    <div id="navHeader" onclick="backToHome()"><p id="titleText">Line 'em Up</p><p id="subtitleText">Lineup Generator</p></div>
     <router-view/>
   </div>
 </template>
@@ -12,12 +12,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import url('./assets/main.css');
 </style>
