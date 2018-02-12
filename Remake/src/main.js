@@ -22,12 +22,12 @@ new Vue({
   created() {
       firebase.initializeApp(config);
       firebase.auth().onAuthStateChanged((user) => {
-        if (this.$route.name !== "ViewPage") {
-          if(user) {
-            this.$router.push('/editor');
-          } else {
-            this.$router.push('/auth');
+        if(user) {
+          if (this.$route.name !== "ViewPage") {
+            this.$router.push(`/${user.uid}`);
           }
+        } else {
+          this.$router.push('/auth');
         }
       });
     },
