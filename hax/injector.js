@@ -1,4 +1,4 @@
-let baseURL = 'http://lineupgenerator.ga/hax'
+var baseURL = 'http://lineupgenerator.ga/hax'
 
 //append the css
 // <link href=/static/css/app.css rel=stylesheet>
@@ -19,6 +19,7 @@ document.body.appendChild(haxRoot);
 //><script type=text/javascript src=/static/js/manifest.js></script>
 
 var haxManifest = document.createElement('script');
+haxManifest.async = "false";
 haxManifest.type = 'text/javascript';
 haxManifest.src = `${baseURL}/static/js/manifest.js`;
 
@@ -27,6 +28,7 @@ document.body.appendChild(haxManifest);
 //<script type=text/javascript src=/static/js/vendor.js></script>
 
 var haxVendor = document.createElement('script');
+haxVendor.async = "false";
 haxVendor.type = 'text/javascript';
 haxVendor.src = `${baseURL}/static/js/vendor.js`;
 
@@ -35,6 +37,7 @@ document.body.appendChild(haxVendor);
 //<script type=text/javascript src=/static/js/app.js></script>
 
 var haxAppScript = document.createElement('script');
+haxAppScript.async = "false";
 haxAppScript.type = 'text/javascript';
 haxAppScript.src = `${baseURL}/static/js/app.js`;
 
