@@ -3,57 +3,44 @@ var haxBaseURL = 'http://lineupgenerator.ga/hax'
 //append the css
 // <link href=/static/css/app.css rel=stylesheet>
 
-function appendHaxCSS() {
-    var haxCss = document.createElement('link');
-    haxCss.href = `${baseURL}/static/css/app.css`;
-    haxCss.rel = "stylesheet";
-    haxCss.onload = appendHaxDiv;
-    document.head.appendChild(haxCss);
-}
+var haxCss = document.createElement('link');
+haxCss.href = `${haxBaseURL}/static/css/app.css`;
+haxCss.rel = "stylesheet";
+document.head.appendChild(haxCss);
 
 //append the div
 //<div id=hax>
 
-function appendHaxDiv() {
-    var haxRoot = document.createElement('div');
-    haxRoot.id = "hax";
-    haxRoot.onload = appendHaxManifest;
-    document.body.appendChild(haxRoot);
-}
+var haxRoot = document.createElement('div');
+haxRoot.id = "hax";
+document.body.appendChild(haxRoot);
 
 //append the js
 //><script type=text/javascript src=/static/js/manifest.js></script>
 
-function appendHaxManifest() {
-    var haxManifest = document.createElement('script');
-    haxManifest.type = 'text/javascript';
-    haxManifest.src = `${baseURL}/static/js/manifest.js`;
-    haxManifest.onload = appendHaxVendor;
-    document.body.appendChild(haxManifest);
-}
+var haxManifest = document.createElement('script');
+haxManifest.async = false;
+haxManifest.type = 'text/javascript';
+haxManifest.src = `${haxBaseURL}/static/js/manifest.js`;
+
+document.body.appendChild(haxManifest);
+
 //<script type=text/javascript src=/static/js/vendor.js></script>
 
-function appendHaxVendor() {
-    var haxVendor = document.createElement('script');
-    haxVendor.type = 'text/javascript';
-    haxVendor.src = `${baseURL}/static/js/vendor.js`;
-    haxVendor.onload = appendHaxAppScript;
-    document.body.appendChild(haxVendor);
-}
+var haxVendor = document.createElement('script');
+haxVendor.async = false;
+haxVendor.type = 'text/javascript';
+haxVendor.src = `${haxBaseURL}/static/js/vendor.js`;
+
+document.body.appendChild(haxVendor);
 
 //<script type=text/javascript src=/static/js/app.js></script>
 
-function appendHaxAppScript() {
-    var haxAppScript = document.createElement('script');
-    haxAppScript.type = 'text/javascript';
-    haxAppScript.src = `${baseURL}/static/js/app.js`;
-    haxAppScript.onload = haxHideOriginal;
-    document.body.appendChild(haxAppScript);
+var haxAppScript = document.createElement('script');
+haxAppScript.async = false;
+haxAppScript.type = 'text/javascript';
+haxAppScript.src = `${haxBaseURL}/static/js/app.js`;
 
-}
+document.body.appendChild(haxAppScript);
 
 //hide the original
-
-function haxHideOriginal() {
-    console.log('hide it all!');
-}
